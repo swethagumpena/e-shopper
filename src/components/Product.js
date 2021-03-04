@@ -13,6 +13,11 @@ class Product extends Component {
         <div className="container">
           <h4>{product.productName}</h4>
           <p>1 kg</p>
+          <p>
+            Rs
+            {' '}
+            {product.price}
+          </p>
           <ProductQuantity
             value={product.quantity}
             onIncrement={onIncrement}

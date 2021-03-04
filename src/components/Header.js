@@ -1,18 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import './Header.css';
 
 function Header(props) {
   const { cartCount } = props;
   return (
     <div className="header">
-      logo
-      E-Shopper
-      <div className="cart">
-        cart total :
+      <p>
+        <Link to="/">logo</Link>
         {' '}
-        {cartCount}
-      </div>
+        E-Shopper
+      </p>
+
+      <Link to="/cart">
+        <div className="cart">
+          cart total :
+          {' '}
+          {cartCount}
+        </div>
+      </Link>
     </div>
   );
 }

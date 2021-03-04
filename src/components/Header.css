@@ -3,5 +3,6 @@
     margin: auto;
     padding: 2em;
     display: flex;
+    justify-content: space-between;
 }
 

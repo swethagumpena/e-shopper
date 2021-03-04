@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
+// import PropTypes from 'prop-types';
 import React from 'react';
 import Product from './Product';
 // import Header from './Header';
@@ -25,5 +26,12 @@ const Home = ({ productObjects, onDecrement, onIncrement }) => {
 
   );
 };
+
+// Home.propTypes = {
+//   onIncrement: PropTypes.func.isRequired,
+//   onDecrement: PropTypes.func.isRequired,
+//   productObjects:
+
+// };
 
 export default Home;
