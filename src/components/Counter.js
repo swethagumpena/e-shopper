@@ -6,9 +6,9 @@ function Counter(props) {
   const { value, onIncrement, onDecrement } = props;
   return (
     <div className="counter">
-      <button onClick={onIncrement} type="button">+</button>
-      <p>{value}</p>
       <button onClick={onDecrement} type="button">-</button>
+      <p>{value}</p>
+      <button onClick={onIncrement} type="button">+</button>
     </div>
   );
 }

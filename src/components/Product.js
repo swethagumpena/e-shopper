@@ -2,18 +2,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ProductQuantity from './Counter';
+import './Product.css';
 
 class Product extends Component {
   render() {
     const { product, onIncrement, onDecrement } = this.props;
     return (
-      <div className="Product">
+      <div className="product">
         <img id="product-img" src={product.url} alt="product" />
         <div className="container">
           <h4>{product.productName}</h4>
           <p>1 kg</p>
           <ProductQuantity
-            value={product.quantityInCart}
+            value={product.quantity}
             onIncrement={onIncrement}
             onDecrement={onDecrement}
           />
