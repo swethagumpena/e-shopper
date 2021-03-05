@@ -5,6 +5,7 @@ import './App.css';
 import Header from './components/Header';
 import Home from './components/Home';
 import Cart from './components/Cart';
+import Orders from './components/Orders';
 
 class App extends Component {
   constructor(props) {
@@ -97,6 +98,7 @@ class App extends Component {
               <Cart
                 cartItems={cartItems}
               />
+              <Route path="/orders"><Orders /></Route>
 
             </Route>
           </Switch>

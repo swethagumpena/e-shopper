@@ -7,19 +7,32 @@ function Header(props) {
   const { cartCount } = props;
   return (
     <div className="header">
-      <p>
-        <Link to="/">logo</Link>
+      <div className="company">
+        <Link to="/"><img className="trolley-img" src="assets/trolley.jpg" alt="logo" /></Link>
         {' '}
-        E-Shopper
-      </p>
+        <p>E-Shopper</p>
+      </div>
 
-      <Link to="/cart">
-        <div className="cart">
-          cart total :
-          {' '}
-          {cartCount}
-        </div>
-      </Link>
+      <div className="basket">
+        <Link to="/orders" className="all-orders">
+          {/* <div className="orders">All Orders</div> */}
+          All Orders
+        </Link>
+        <Link to="/cart">
+          <div className="cart">
+            <img className="basket-img" src="assets/basket.jpeg" alt="basket" />
+            <div className="order-count">
+              <p>My Basket</p>
+              <p>
+                {cartCount}
+                {' '}
+                items
+              </p>
+            </div>
+          </div>
+        </Link>
+      </div>
+
     </div>
   );
 }

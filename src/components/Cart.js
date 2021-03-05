@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Cart = ({ cartItems }) => (
-  // const cartTotal = cartItems.reduce((accumulator,eachItem) =>
-  // {accumulator + eachItem.price * eachItem.quantity},0);
   <div>
     <div>
       Your Basket (
