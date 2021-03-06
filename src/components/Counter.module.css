@@ -1,0 +1,20 @@
+.counter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.counter p {
+    padding: 0;
+}
+
+.container {
+    font-weight: normal;
+    background-color:khaki;
+}
+
+.containerQuantity0{
+    background-color: #D0D0D0;
+}

@@ -1,0 +1,31 @@
+.productCard{
+    border: 0.125rem solid lightgray;
+    padding: 0.5rem;
+    margin: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+#productImg {
+    width: 15rem;
+    height: 15rem;
+}
+
+.priceQuantityContainer {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: large;
+    padding: 0.5rem;
+}
+
+.priceQuantity{
+    display: flex;
+    flex-direction: column;
+    background-color: #d0d0d0;
+}
+
+.priceQuantity p {
+    padding: 0 1rem;
+}
+
+.productPrice{
+    font-weight: bold;
+}

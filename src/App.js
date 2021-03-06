@@ -2,10 +2,12 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
+import './Normalize.css';
 import Header from './components/Header';
 import Home from './components/Home';
 import Cart from './components/Cart';
 import Orders from './components/Orders';
+import CheckoutForm from './components/CheckoutForm';
 
 class App extends Component {
   constructor(props) {
@@ -29,13 +31,104 @@ class App extends Component {
         },
         {
           id: 3,
-          productName: 'Grapes',
+          productName: 'Grape',
           quantity: 0,
           price: 40,
           url: 'assets/grape.png',
         },
+        {
+          id: 4,
+          productName: 'Mango',
+          quantity: 0,
+          price: 40,
+          url: 'assets/mango.png',
+        }, {
+          id: 5,
+          productName: 'Orange',
+          quantity: 0,
+          price: 40,
+          url: 'assets/orange.png',
+        }, {
+          id: 6,
+          productName: 'Peach',
+          quantity: 0,
+          price: 40,
+          url: 'assets/peach.png',
+        }, {
+          id: 7,
+          productName: 'Pineapple',
+          quantity: 0,
+          price: 40,
+          url: 'assets/pineapple.png',
+        }, {
+          id: 8,
+          productName: 'Strawberry',
+          quantity: 0,
+          price: 40,
+          url: 'assets/strawberry.png',
+        },
       ],
       cartCount: 0,
+      orders: [
+        {
+          orderId: 1,
+          itemsCount: 3,
+          date: 'Sun 04 Mar 2018',
+          time: '10:01pm',
+          amount: 883.00,
+          items: [
+            {
+              id: 1,
+              productName: 'Banana',
+              quantity: 1,
+              price: 40,
+              url: 'assets/banana.png',
+            },
+            {
+              id: 2,
+              productName: 'Cherry',
+              quantity: 2,
+              price: 40,
+              url: 'assets/cherry.png',
+            },
+            {
+              id: 3,
+              productName: 'Grapes',
+              quantity: 1,
+              price: 40,
+              url: 'assets/grape.png',
+            },
+          ],
+        }, {
+          orderId: 2,
+          itemsCount: 3,
+          date: 'Sun 04 Mar 2018',
+          time: '10:01pm',
+          amount: 883.00,
+          items: [
+            {
+              id: 1,
+              productName: 'Banana',
+              quantity: 1,
+              price: 40,
+              url: 'assets/banana.png',
+            },
+            {
+              id: 2,
+              productName: 'Cherry',
+              quantity: 2,
+              price: 40,
+              url: 'assets/cherry.png',
+            },
+            {
+              id: 3,
+              productName: 'Grapes',
+              quantity: 1,
+              price: 40,
+              url: 'assets/grape.png',
+            },
+          ],
+        }],
     };
   }
 
@@ -81,7 +174,9 @@ class App extends Component {
   }
 
   render() {
-    const { cartCount, productObjects, cartItems } = this.state;
+    const {
+      cartCount, productObjects, cartItems, orders,
+    } = this.state;
     return (
       <>
         <BrowserRouter>
@@ -98,9 +193,15 @@ class App extends Component {
               <Cart
                 cartItems={cartItems}
               />
-              <Route path="/orders"><Orders /></Route>
+            </Route>
+            <Route path="/orders">
+              <Orders
+                orders={orders}
+              />
 
             </Route>
+            <Route path="/checkout"><CheckoutForm /></Route>
+
           </Switch>
         </BrowserRouter>
 

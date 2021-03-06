@@ -6,34 +6,37 @@ import './Header.css';
 function Header(props) {
   const { cartCount } = props;
   return (
-    <div className="header">
-      <div className="company">
-        <Link to="/"><img className="trolley-img" src="assets/trolley.jpg" alt="logo" /></Link>
-        {' '}
-        <p>E-Shopper</p>
-      </div>
+    <>
+      <div className="header">
+        <div className="company">
+          <Link to="/"><img className="trolley-img" src="assets/trolley.jpg" alt="logo" /></Link>
+          {' '}
+          <p>E-Shopper</p>
+        </div>
 
-      <div className="basket">
-        <Link to="/orders" className="all-orders">
-          {/* <div className="orders">All Orders</div> */}
-          All Orders
-        </Link>
-        <Link to="/cart">
-          <div className="cart">
-            <img className="basket-img" src="assets/basket.jpeg" alt="basket" />
-            <div className="order-count">
-              <p>My Basket</p>
-              <p>
-                {cartCount}
-                {' '}
-                items
-              </p>
+        <div className="basket">
+          <Link to="/orders" className="all-orders">
+            {/* <div className="orders">All Orders</div> */}
+            All Orders
+          </Link>
+          <Link to="/cart">
+            <div className="cart">
+              <img className="basket-img" src="assets/basket.jpeg" alt="basket" />
+              <div className="order-count">
+                <p>My Basket</p>
+                <p>
+                  {cartCount}
+                  {' '}
+                  items
+                </p>
+              </div>
             </div>
-          </div>
-        </Link>
-      </div>
+          </Link>
+        </div>
 
-    </div>
+      </div>
+      <hr />
+    </>
   );
 }
 

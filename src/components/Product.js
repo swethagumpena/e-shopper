@@ -2,27 +2,30 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ProductQuantity from './Counter';
-import './Product.css';
+import styles from './Product.module.css';
 
 class Product extends Component {
   render() {
     const { product, onIncrement, onDecrement } = this.props;
     return (
-      <div className="product">
-        <img id="product-img" src={product.url} alt="product" />
-        <div className="container">
+      <div className={styles.productCard}>
+        <img id={styles.productImg} src={product.url} alt="product" />
+        <div className={styles.priceQuantityContainer}>
           <h4>{product.productName}</h4>
           <p>1 kg</p>
-          <p>
-            Rs
-            {' '}
-            {product.price}
-          </p>
-          <ProductQuantity
-            value={product.quantity}
-            onIncrement={onIncrement}
-            onDecrement={onDecrement}
-          />
+          <div className={styles.priceQuantity}>
+            <p className={styles.productPrice}>
+              MRP
+              {' '}
+              {product.price}
+              /-
+            </p>
+            <ProductQuantity
+              value={product.quantity}
+              onIncrement={onIncrement}
+              onDecrement={onDecrement}
+            />
+          </div>
         </div>
       </div>
     );
@@ -55,8 +58,16 @@ class Product extends Component {
 //   url: '',
 // };
 
+const productShape = {
+  id: PropTypes.number,
+  productName: PropTypes.string,
+  quantity: PropTypes.number,
+  price: PropTypes.price,
+  url: PropTypes.string,
+};
+
 Product.propTypes = {
-  product: PropTypes.objectOf.isRequired,
+  product: PropTypes.shape(productShape).isRequired,
   onIncrement: PropTypes.func.isRequired,
   onDecrement: PropTypes.func.isRequired,
 };
