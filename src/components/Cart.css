@@ -29,44 +29,58 @@
     text-align: center;
 }
 
-.continue-shopping-btn:hover {
-    background-color:lightgray;
-}
-.continue-shopping-btn{
-    padding: 0.75rem;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    margin-top: 15rem;
-}
-
 .total-card{
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    /* width: 40%; */
-    border: black;
-    /* float: right; */
+    display: flex;
+    flex-direction: column;
+    width: 15rem;
+    border: 0.125rem solid lightgray;
     margin: 2rem;
-}
-
-.total-card hr{
-    margin: 1rem;
 }
 
 .total-amount{
     display: flex;
-    margin: 2rem;
+    justify-content: space-evenly;
+    padding: 1rem;
+    font-size: larger;
+    font-weight: 500;
 }
 
-.total-amount p {
-    padding-right: 4rem;
-    font-size: larger;
+.total-amount hr{
+    margin-right: 1rem;
+}
+
+.horizontal-line{
+    margin: 0 1rem;
 }
 
 .checkout-btn{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.checkout-btn button{
+    padding: 0.5rem;
+    margin: 1rem;
+    box-shadow: 0rem 0rem 0.25rem #9a9a9a;
+    background-color: lightgoldenrodyellow;
+}
+
+.total-container{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    margin: 2rem 0;
+}
+
+.continue-shopping{
+    display: flex;
+    align-items: flex-end;
+}
+
+.continue-shopping  button {
+    margin: 2rem;
+    box-shadow: 0rem 0rem 0.25rem #9a9a9a;
     padding: 0.75rem;
-    background-color: burlywood;
-    float: right;
-    transition: 0.3s;
-    margin-top: 1rem;
 }
 
 @media (max-width: 30rem) {          /*mobile-screen: pixel2, iphone  678 plus*/

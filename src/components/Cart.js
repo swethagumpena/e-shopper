@@ -45,22 +45,34 @@ const Cart = ({ cartItems }) => (
         </tr>
       ))}
     </table>
-    <div className="total-card">
-      <div className="total-amount">
-        <p>TOTAL</p>
-        <p>
-          Rs.
-          {' '}
-          {cartItems.reduce((accumulator, eachItem) => (
-            accumulator + eachItem.price * eachItem.quantity), 0)}
-          .00
-        </p>
-      </div>
-      <hr />
-      <Link to="/checkout"><button className="checkout-btn" type="button">CHECKOUT</button></Link>
-    </div>
 
-    <Link to="/"><button className="continue-shopping-btn" type="button">Continue  Shopping</button></Link>
+    <div className="total-container">
+      <div className="total-card">
+        <div className="total-amount">
+          <p>TOTAL</p>
+          <p>
+            Rs.
+            {' '}
+            {cartItems.reduce((accumulator, eachItem) => (
+              accumulator + eachItem.price * eachItem.quantity), 0)}
+            .00
+          </p>
+        </div>
+        <div className="horizontal-line">
+          <hr />
+        </div>
+        <div className="checkout-btn">
+          <Link to="/checkout">
+            <button type="button">
+              CHECKOUT =&gt;
+            </button>
+          </Link>
+        </div>
+      </div>
+      <div className="continue-shopping">
+        <Link to="/"><button type="button">Continue  Shopping</button></Link>
+      </div>
+    </div>
 
     {/* <div>{JSON.stringify(cartItems)}</div> */}
   </div>
