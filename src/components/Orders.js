@@ -95,7 +95,7 @@ const productShape = {
   id: PropTypes.number,
   productName: PropTypes.string,
   quantity: PropTypes.number,
-  price: PropTypes.price,
+  price: PropTypes.number,
   url: PropTypes.string,
 };
 
