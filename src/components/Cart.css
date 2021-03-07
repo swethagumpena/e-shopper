@@ -89,4 +89,22 @@
         display: block;         /*these two for horizontally scrollable tables*/
         max-width: fit-content;
     }
+    .total-amount{
+        flex-direction: column;
+    }
+    .total-amount p{
+        margin: 0.5rem;
+    }
+    .checkout-btn{
+        display: flex;
+        justify-content: center;
+    }
+    .total-card{
+        margin: 1rem;
+    }
+    .continue-shopping button{
+        margin: 1rem;
+        padding: 0.25rem;
+        font-size: small;
+    }
 }
