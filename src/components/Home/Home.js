@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 // import PropTypes from 'prop-types';
 import React from 'react';
-import Product from './Product';
+import Product from '../Product/Product';
 // import Header from './Header';
 import './Home.css';
 

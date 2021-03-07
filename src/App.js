@@ -3,11 +3,11 @@ import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 import './Normalize.css';
-import Header from './components/Header';
-import Home from './components/Home';
-import Cart from './components/Cart';
-import Orders from './components/Orders';
-import CheckoutForm from './components/CheckoutForm';
+import Header from './components/Nav/Header';
+import Home from './components/Home/Home';
+import Cart from './components/Cart/Cart';
+import Orders from './components/Orders/Orders';
+import CheckoutForm from './components/CheckoutForm/CheckoutForm';
 
 class App extends Component {
   constructor(props) {

@@ -1,7 +1,7 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ProductQuantity from './Counter';
+import ProductQuantity from '../Counter/Counter';
 import styles from './Product.module.css';
 
 class Product extends Component {
