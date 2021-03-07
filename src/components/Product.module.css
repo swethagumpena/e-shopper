@@ -32,7 +32,7 @@
     font-weight: bold;
 }
 
-@media (max-width: 72rem) {         /*ipad pro: 1024*/
+@media (max-width: 72rem) {         /*ipad pro/laptop: 1024*/
     .productCard {
         width:  calc((100% - (6 * 0.5rem + 6 * 0.5rem + 6 * 0.125rem)) / 3);
     }
