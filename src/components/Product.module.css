@@ -37,7 +37,7 @@
         width:  calc((100% - (6 * 0.5rem + 6 * 0.5rem + 6 * 0.125rem)) / 3);
     }
     #productImg {
-        height: auto;
+        height: 18.75rem;
     }
 }
 

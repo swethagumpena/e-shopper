@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Orders.css';
 
 const Orders = ({ orders }) => (
   <div>
@@ -12,7 +13,7 @@ const Orders = ({ orders }) => (
       )
     </div>
     <div>
-      <table>
+      <table className="basket-table">
         {orders.map((order) => (
           <>
             <tr key={order.id}>
@@ -22,18 +23,18 @@ const Orders = ({ orders }) => (
               <th>AMOUNT</th>
             </tr>
             <tr>
-              <td>
+              <td className="items-align">
                 Order id:
                 {' '}
                 {order.orderId}
               </td>
-              <td>
+              <td className="items-align">
                 {order.itemsCount}
                 {' '}
                 items
               </td>
-              <td>{order.date}</td>
-              <td>{order.amount}</td>
+              <td className="items-align">{order.date}</td>
+              <td className="items-align">{order.amount}</td>
             </tr>
             <tr>
               <th>ITEM DESCRIPTION</th>
@@ -65,19 +66,23 @@ const Orders = ({ orders }) => (
                     .00
                   </td>
                 </tr>
-                <tr>
-                  <td>
-                    TOTAL Rs.
-                    {' '}
-                    {order.items.reduce((accumulator, item) => (
-                      accumulator + eachItem.price * item.quantity), 0)}
-                    .00
-                  </td>
-                </tr>
 
               </>
             ))}
-
+            <tr>
+              <td />
+              <td />
+              <td />
+              <td className="total-data">
+                <p>
+                  TOTAL Rs.
+                  {' '}
+                  {order.items.reduce((accumulator, item) => (
+                    accumulator + item.price * item.quantity), 0)}
+                  .00
+                </p>
+              </td>
+            </tr>
           </>
         ))}
       </table>

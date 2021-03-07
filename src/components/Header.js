@@ -13,7 +13,7 @@ function Header(props) {
           {' '}
           <p>E-Shopper</p>
         </div>
-
+        <div className="blank" />
         <div className="basket">
           <Link to="/orders" className="all-orders">
             {/* <div className="orders">All Orders</div> */}
