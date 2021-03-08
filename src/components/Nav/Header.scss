@@ -1,6 +1,30 @@
-.header{
+// .header{
+//     display: flex;
+//     justify-content: space-between;
+// }
+@import  '../../styles/index.scss';
+
+.header-light{
     display: flex;
     justify-content: space-between;
+    background-color:$primary-background-color;
+    color:black;
+}
+
+.header-dark{
+    display: flex;
+    justify-content: space-between;
+    // background-color: grey;
+    @include custom-mixin;
+    color: white;
+}
+
+.header-dark a{
+    color: white;
+}
+
+.header-dark a p{
+    color: white;
 }
 
 .trolley-img  {
@@ -11,16 +35,25 @@
 .company {
     display: flex;
     padding: 1rem;
+    p {
+        font-size: larger;
+        font-weight: bold;
+        margin: 0;
+        color: green;
+        padding-left: 1rem;
+        display: flex;
+        align-items: center;
+    }
 }
 
-.company p {
-    font-size: larger;
-    font-weight: bold;
-    margin: 0;
-    padding-left: 1rem;
-    display: flex;
-    align-items: center;
-}
+// .company p {
+//     font-size: larger;
+//     font-weight: bold;
+//     margin: 0;
+//     padding-left: 1rem;
+//     display: flex;
+//     align-items: center;
+// }
 
 .basket{
     display: flex;
@@ -67,7 +100,7 @@
     align-items: center;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 1.25rem;
-    color: gray;
+    color: black;
 }
 
 @media (max-width: 30rem){

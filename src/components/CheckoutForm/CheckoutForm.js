@@ -6,6 +6,7 @@ import './CheckoutForm.css';
 
 const validateName = (value) => {
   let errorMessage;
+  console.log(value);
   if (!value) {
     errorMessage = 'Required';
   }
@@ -54,13 +55,14 @@ class CheckoutForm extends Component {
     handleSubmit = () => {
       const { name, phone, email } = this.state;
       let information = '';
+      console.log(phone);
       information += `Name: ${name} \nPhone: ${phone}\nEmail: ${email}`;
       this.setState({ data: information });
     };
 
     render() {
       const {
-        data, name, phone, email,
+        data,
       } = this.state;
       return (
         <>
@@ -74,23 +76,23 @@ class CheckoutForm extends Component {
                   name="name"
                   placeholder="Name"
                   validate={validateName}
-                  value={name}
-                  onChange={this.handleChange}
+                  // value={name}
+                  // onChange={this.handleChange}
                 />
                 {errors.name && touched.name ? <div>{errors.name}</div> : null}
                 <Field
                   name="email"
                   placeholder="Email"
-                  value={email}
-                  onChange={this.handleChange}
+                  // value={email}
+                  // onChange={this.handleChange}
                   validate={validateEmail}
                 />
                 {errors.email && touched.email ? <div>{errors.email}</div> : null}
                 <Field
                   name="phone"
                   placeholder="Phone number"
-                  value={phone}
-                  onChange={this.handleChange}
+                  // value={phone}
+                  // onChange={this.handleChange}
                   validate={validatePhone}
                 />
                 {errors.phone && touched.phone ? <div>{errors.phone}</div> : null}

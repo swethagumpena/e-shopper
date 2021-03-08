@@ -1,0 +1,9 @@
+//colors
+$primary-text-color: white;
+$primary-background-color:pink;
+
+//breakpoints
+
+@mixin custom-mixin {
+    background-color: yellow;
+}
