@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import './Header.css';
+import ThemeContext from '../../ThemeContext';
+import './Header.scss';
 
-function Header(props) {
-  const { cartCount } = props;
+const Header = ({ cartCount }) => {
+  const theme = useContext(ThemeContext);
   return (
     <>
-      <div className="header">
+      <div className={theme === 'dark' ? 'header-dark' : 'header-light'}>
+        {/* <div style={{ background: theme.backgroundColor }}> */}
         <div className="company">
           <Link to="/"><img className="trolley-img" src="assets/trolley.jpg" alt="logo" /></Link>
           {' '}
@@ -31,12 +33,12 @@ function Header(props) {
             </div>
           </Link>
         </div>
-
+        {/* </div> */}
       </div>
       <hr />
     </>
   );
-}
+};
 
 Header.propTypes = {
   cartCount: PropTypes.number.isRequired,
