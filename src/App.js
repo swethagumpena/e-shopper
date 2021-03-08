@@ -1,4 +1,3 @@
-/* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
@@ -75,7 +74,7 @@ class App extends Component {
           itemsCount: 3,
           date: 'Sun 04 Mar 2018',
           time: '10:01pm',
-          amount: 883.00,
+          amount: 883,
           items: [
             {
               id: 1,
@@ -132,7 +131,7 @@ class App extends Component {
     };
   }
 
-  onIncrement = (id) => { // make it  arrow function
+  onIncrement = (id) => {
     const { productObjects } = this.state;
     this.setState((prevState) => {
       let newState = {
@@ -155,14 +154,14 @@ class App extends Component {
     });
   }
 
-  onDecrement(item) {
+  onDecrement(item) { // passing item and not id, coz we  need to  check item's quantity
     if (item.quantity === 0) {
       return;
     }
-    const { productObjects } = this.state;
+    const { productObjects, cartCount } = this.state;
     const newState = {
       ...this.state,
-      cartCount: this.state.cartCount - 1,
+      cartCount: cartCount - 1,
       productObjects: productObjects.map((eachProduct) => {
         if (eachProduct.id === item.id) {
           return { ...eachProduct, quantity: eachProduct.quantity - 1 };
@@ -198,10 +197,10 @@ class App extends Component {
               <Orders
                 orders={orders}
               />
-
             </Route>
-            <Route path="/checkout"><CheckoutForm /></Route>
-
+            <Route path="/checkout">
+              <CheckoutForm />
+            </Route>
           </Switch>
         </BrowserRouter>
 

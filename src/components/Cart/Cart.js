@@ -13,37 +13,40 @@ const Cart = ({ cartItems }) => (
       <hr />
     </div>
     <table className="basket-table">
-      <tr>
-        <th>ITEM DESCRIPTION</th>
-        <th>UNIT PRICE</th>
-        <th>QUANTITY</th>
-        <th>SUB TOTAL</th>
-      </tr>
-      <tr className="category">
-        <td>FRUITS</td>
-        <td />
-        <td />
-        <td />
-      </tr>
-
-      {cartItems.map((eachItem) => (
-        <tr key={eachItem.id}>
-          <td>{eachItem.productName}</td>
-          <td className="items-align">
-            Rs.
-            {' '}
-            {eachItem.price}
-            .00
-          </td>
-          <td className="items-align">{eachItem.quantity}</td>
-          <td className="items-align">
-            Rs.
-            {' '}
-            {eachItem.price * eachItem.quantity}
-            .00
-          </td>
+      <tbody>
+        <tr>
+          <th>ITEM DESCRIPTION</th>
+          <th>UNIT PRICE</th>
+          <th>QUANTITY</th>
+          <th>SUB TOTAL</th>
         </tr>
-      ))}
+        <tr className="category">
+          <td>FRUITS</td>
+          <td />
+          <td />
+          <td />
+        </tr>
+
+        {cartItems.map((eachItem) => (
+          <tr key={eachItem.id}>
+            <td>{eachItem.productName}</td>
+            <td className="items-align">
+              Rs.
+              {' '}
+              {eachItem.price}
+              .00
+            </td>
+            <td className="items-align">{eachItem.quantity}</td>
+            <td className="items-align">
+              Rs.
+              {' '}
+              {eachItem.price * eachItem.quantity}
+              .00
+            </td>
+          </tr>
+        ))}
+      </tbody>
+
     </table>
 
     <div className="total-container">
