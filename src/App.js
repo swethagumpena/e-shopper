@@ -12,7 +12,7 @@ import ThemeContext, { themes } from './ThemeContext';
 // import CounterInc from './components/CounterInc';
 
 const App = () => {
-  const [theme, setTheme] = useState(themes.dark);
+  const [theme, setTheme] = useState(themes.light);
   const [cartItems, setCartItems] = useState([]);
   const [products, setProducts] = useState([
     {
@@ -171,7 +171,9 @@ const App = () => {
         <ThemeContext.Provider value={theme}>
           <Header cartCount={cartCount} />
         </ThemeContext.Provider>
-        <button type="button" onClick={toggleTheme}>Change Theme</button>
+        <div className="toggle-button">
+          <button type="button" onClick={toggleTheme}>Change Theme</button>
+        </div>
 
         <Switch>
           <Route path="/" exact>

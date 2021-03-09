@@ -7,25 +7,32 @@
 .header-light{
     display: flex;
     justify-content: space-between;
-    background-color:$primary-background-color;
-    color:black;
+    background-color:$primary-background-color-light;
+    color:$primary-text-color-light;
 }
 
 .header-dark{
     display: flex;
     justify-content: space-between;
     // background-color: grey;
-    @include custom-mixin;
-    color: white;
+    background-color:$primary-background-color-dark;
+    color:$primary-text-color-dark;
+    // @include custom-mixin;
+    // color: white;
 }
 
-.header-dark a{
-    color: white;
-}
+.header-dark{
+    a{
+        color:$primary-text-color-dark;
+        p {
+            color:$primary-text-color-dark;
+        }
+    }
+} 
 
-.header-dark a p{
-    color: white;
-}
+// .header-dark a p{
+//     color: white;
+// }
 
 .trolley-img  {
     float: left;
@@ -39,7 +46,6 @@
         font-size: larger;
         font-weight: bold;
         margin: 0;
-        color: green;
         padding-left: 1rem;
         display: flex;
         align-items: center;
@@ -103,7 +109,7 @@
     color: black;
 }
 
-@media (max-width: 30rem){
+@include media-mixin ($mobile-breakpoint){
     .company{
         padding: 1rem 0.5rem 1rem 0.5rem;
     }
@@ -112,7 +118,7 @@
     }
     .company p{
         font-size: medium;
-        padding-left: 0;
+        padding-left: 0.25rem;
     }
     .basket > a{
         font-size: medium;

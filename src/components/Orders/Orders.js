@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Orders.css';
+import './Orders.scss';
 
 const Orders = ({ orders }) => (
   <div>

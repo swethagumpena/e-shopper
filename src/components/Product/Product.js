@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ProductQuantity from '../Counter/Counter';
-import styles from './Product.module.css';
+import styles from './Product.module.scss';
 
 const Product = ({ product, onIncrement, onDecrement }) => (
   <div className={styles.productCard}>

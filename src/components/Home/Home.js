@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Product from '../Product/Product';
-import './Home.css';
+import './Home.scss';
 
 const Home = ({ productObjects, onDecrement, onIncrement }) => {
   const allProducts = productObjects.map((eachProduct) => (

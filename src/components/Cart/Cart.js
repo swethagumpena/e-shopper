@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Cart.css';
+import './Cart.scss';
 import { Link } from 'react-router-dom';
 
 const Cart = ({ cartItems }) => (

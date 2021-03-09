@@ -1,8 +1,20 @@
 //colors
-$primary-text-color: white;
-$primary-background-color:pink;
+$primary-text-color-dark:white;
+$primary-background-color-dark:grey;
+$primary-text-color-light:black;
+$primary-background-color-light:white;
 
 //breakpoints
+$mobile-breakpoint:30rem;
+$ipad-breakpoint:48rem;
+$laptop-breakpoint:72rem;
+
+@mixin media-mixin($width){
+    @media (max-width: $width){
+        @content;
+    }
+}
+
 
 @mixin custom-mixin {
     background-color: yellow;

@@ -1,3 +1,5 @@
+@import '../../styles/index.scss';
+
 .basket-msg {
     font-size: x-large;
     margin: 2rem;
@@ -12,14 +14,24 @@
     white-space: nowrap;
 }
 
-.basket-table td, .basket-table th {
-    padding: 8px;
+.basket-table {
+    td{
+        padding: 8px,
+    }
+    th{
+        background-color: gray;
+        padding: 0.75rem;
+    }
 }
 
-.basket-table th {
-    background-color: gray;
-    padding: 1rem;
-}
+// .basket-table td, .basket-table th {
+//     padding: 8px;
+// }
+
+// .basket-table th {
+//     background-color: gray;
+//     padding: 1rem;
+// }
 
 .category {
     background-color: lightgray;
@@ -77,13 +89,15 @@
     align-items: flex-end;
 }
 
-.continue-shopping  button {
-    margin: 2rem;
-    box-shadow: 0rem 0rem 0.25rem #9a9a9a;
-    padding: 0.75rem;
-}
+.continue-shopping {
+    button {
+        margin: 2rem;
+        box-shadow: 0rem 0rem 0.25rem #9a9a9a;
+        padding: 0.75rem;
+    }
+} 
 
-@media (max-width: 30rem) {          /*mobile-screen: pixel2, iphone  678 plus*/
+@include media-mixin ($mobile-breakpoint) {          /*mobile-screen: pixel2, iphone  678 plus*/
     .basket-table{
      /*makes it possible to have scrollbars. By default (and unlike tables), blocks span the full width of the parent element. This can be prevented with max-width: fit-content;, which allows you to still horizontally center tables with less content*/
         display: block;         /*these two for horizontally scrollable tables*/
@@ -108,3 +122,29 @@
         font-size: small;
     }
 }
+
+// @media (max-width: 30rem) {          /*mobile-screen: pixel2, iphone  678 plus*/
+//     .basket-table{
+//      /*makes it possible to have scrollbars. By default (and unlike tables), blocks span the full width of the parent element. This can be prevented with max-width: fit-content;, which allows you to still horizontally center tables with less content*/
+//         display: block;         /*these two for horizontally scrollable tables*/
+//         max-width: fit-content;
+//     }
+//     .total-amount{
+//         flex-direction: column;
+//     }
+//     .total-amount p{
+//         margin: 0.5rem;
+//     }
+//     .checkout-btn{
+//         display: flex;
+//         justify-content: center;
+//     }
+//     .total-card{
+//         margin: 1rem;
+//     }
+//     .continue-shopping button{
+//         margin: 1rem;
+//         padding: 0.25rem;
+//         font-size: small;
+//     }
+// }

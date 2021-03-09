@@ -1,14 +1,17 @@
+@import '../../styles/index.scss';
+
 .counter{
     display: flex;
     align-items: center;
     justify-content: center;
+    p {
+        padding: 0;
+    }
 }
 
-
-
-.counter p {
-    padding: 0;
-}
+// .counter p {
+//     padding: 0;
+// }
 
 .container {
     font-weight: normal;
