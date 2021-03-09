@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should match snapshot for theme dark 1`] = `
+<div>
+  <div
+    class="header-dark"
+  >
+    <div
+      class="company"
+    >
+      <a
+        href="/"
+      >
+        <img
+          alt="logo"
+          class="trolley-img"
+          data-testid="trolley-img"
+          src="assets/trolley.jpg"
+        />
+      </a>
+       
+      <p>
+        E-Shopper
+      </p>
+    </div>
+    <div
+      class="basket"
+    >
+      <a
+        class="all-orders"
+        href="/orders"
+      >
+        All Orders
+      </a>
+      <a
+        href="/cart"
+      >
+        <div
+          class="cart"
+        >
+          <img
+            alt="basket"
+            class="basket-img"
+            src="assets/basket.jpeg"
+          />
+          <div
+            class="order-count"
+          >
+            <p>
+              My Basket
+            </p>
+            <p>
+              2 items
+            </p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <hr />
+</div>
+`;
+
+exports[`Header should match snapshot for theme light 1`] = `
+<div>
+  <div
+    class="header-light"
+  >
+    <div
+      class="company"
+    >
+      <a
+        href="/"
+      >
+        <img
+          alt="logo"
+          class="trolley-img"
+          data-testid="trolley-img"
+          src="assets/trolley.jpg"
+        />
+      </a>
+       
+      <p>
+        E-Shopper
+      </p>
+    </div>
+    <div
+      class="basket"
+    >
+      <a
+        class="all-orders"
+        href="/orders"
+      >
+        All Orders
+      </a>
+      <a
+        href="/cart"
+      >
+        <div
+          class="cart"
+        >
+          <img
+            alt="basket"
+            class="basket-img"
+            src="assets/basket.jpeg"
+          />
+          <div
+            class="order-count"
+          >
+            <p>
+              My Basket
+            </p>
+            <p>
+              2 items
+            </p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <hr />
+</div>
+`;
