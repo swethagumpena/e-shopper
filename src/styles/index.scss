@@ -1,5 +1,4 @@
 //colors
-<<<<<<< HEAD
 $primary-text-color-dark:white;
 $primary-background-color-dark:grey;
 $primary-text-color-light:black;
@@ -15,13 +14,6 @@ $laptop-breakpoint:72rem;
         @content;
     }
 }
-
-=======
-$primary-text-color: white;
-$primary-background-color:pink;
-
-//breakpoints
->>>>>>> bc8dc9e8f7f0370b743c10d016316002aa8014ea
 
 @mixin custom-mixin {
     background-color: yellow;

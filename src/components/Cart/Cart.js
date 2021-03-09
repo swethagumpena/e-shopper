@@ -6,12 +6,12 @@ import { useHistory } from 'react-router-dom';
 
 const Cart = ({ cartItems }) => {
   const history = useHistory();
-  const handleClickHome = () => {
-    history.push('/');
-  };
-  const handleClickCheckout = () => {
-    history.push('/checkout');
-  };
+  // const handleClickHome = () => {
+  //   history.push('/');
+  // };
+  // const handleClickCheckout = () => {
+  //   history.push('/checkout');
+  // };
 
   return (
 
@@ -81,12 +81,12 @@ const Cart = ({ cartItems }) => {
                 CHECKOUT =&gt;
               </button>
             </Link> */}
-            <button type="button" onClick={handleClickCheckout}>CHECKOUT =&gt;</button>
+            <button type="button" onClick={() => history.push('/checkout')}>CHECKOUT =&gt;</button>
           </div>
         </div>
         <div className="continue-shopping">
           {/* <Link to="/"><button type="button">Continue Shopping</button></Link> */}
-          <button type="button" onClick={handleClickHome}>Continue Shopping</button>
+          <button type="button" onClick={() => history.push('/')}>Continue Shopping</button>
         </div>
       </div>
 

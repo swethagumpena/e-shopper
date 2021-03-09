@@ -5,11 +5,8 @@ export const themes = {
   dark: 'dark',
 };
 
-<<<<<<< HEAD
 const ThemeContext = React.createContext(themes.light);
-=======
-const ThemeContext = React.createContext(themes.dark);
->>>>>>> bc8dc9e8f7f0370b743c10d016316002aa8014ea
+
 export default ThemeContext;
 
 // const theme = {

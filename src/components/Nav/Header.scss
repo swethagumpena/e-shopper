@@ -5,15 +5,10 @@
 @import  '../../styles/index.scss';
 
 .header-light{
-<<<<<<< HEAD:src/components/Nav/Header.scss
     display: flex;
     justify-content: space-between;
     background-color:$primary-background-color-light;
     color:$primary-text-color-light;
-=======
-    display: flex;
-    justify-content: space-between;
-    background-color:$primary-background-color;
     color:black;
 }
 
@@ -25,14 +20,13 @@
     color: white;
 }
 
-.header-dark a{
-    color: white;
-}
+// .header-dark a{
+//     color: white;
+// }
 
-.header-dark a p{
-    color: white;
->>>>>>> bc8dc9e8f7f0370b743c10d016316002aa8014ea:src/components/Nav/Header.css
-}
+// .header-dark a p{
+//     color: white;
+// }
 
 .header-dark{
     display: flex;
@@ -69,10 +63,6 @@
         font-size: larger;
         font-weight: bold;
         margin: 0;
-<<<<<<< HEAD:src/components/Nav/Header.scss
-=======
-        color: green;
->>>>>>> bc8dc9e8f7f0370b743c10d016316002aa8014ea:src/components/Nav/Header.css
         padding-left: 1rem;
         display: flex;
         align-items: center;
