@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Counter should match snapshot 1`] = `
+<div>
+  <div
+    class="counter"
+  >
+    <button
+      type="button"
+    >
+      -
+    </button>
+    <p
+      class="container"
+    >
+      2 in basket
+    </p>
+    <button
+      type="button"
+    >
+      +
+    </button>
+  </div>
+</div>
+`;

@@ -7,9 +7,7 @@ const Counter = ({ value, onIncrement, onDecrement }) => (
     <button onClick={onDecrement} type="button">-</button>
     {/* <p className={`${styles.container} ${value === 0 ? styles.containerQuantity0 : ''}`}> */}
     <p className={(value === 0 ? styles.containerQuantity0 : styles.container)}>
-      {value}
-      {' '}
-      in Basket
+      {`${value} in basket`}
     </p>
     <button onClick={onIncrement} type="button">+</button>
   </div>

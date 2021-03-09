@@ -2,17 +2,17 @@
 //     display: flex;
 //     justify-content: space-between;
 // }
-@import  '../../styles/index.scss';
+@import "../../styles/index.scss";
 
-.header-light{
+.header-light {
     display: flex;
     justify-content: space-between;
-    background-color:$primary-background-color-light;
-    color:$primary-text-color-light;
-    color:black;
+    background-color: $primary-background-color-light;
+    color: $primary-text-color-light;
+    color: black;
 }
 
-.header-dark{
+.header-dark {
     display: flex;
     justify-content: space-between;
     // background-color: grey;
@@ -28,30 +28,30 @@
 //     color: white;
 // }
 
-.header-dark{
+.header-dark {
     display: flex;
     justify-content: space-between;
     // background-color: grey;
-    background-color:$primary-background-color-dark;
-    color:$primary-text-color-dark;
+    background-color: $primary-background-color-dark;
+    color: $primary-text-color-dark;
     // @include custom-mixin;
     // color: white;
 }
 
-.header-dark{
-    a{
-        color:$primary-text-color-dark;
+.header-dark {
+    a {
+        color: $primary-text-color-dark;
         p {
-            color:$primary-text-color-dark;
+            color: $primary-text-color-dark;
         }
     }
-} 
+}
 
 // .header-dark a p{
 //     color: white;
 // }
 
-.trolley-img  {
+.trolley-img {
     float: left;
     width: 4rem;
 }
@@ -78,7 +78,7 @@
 //     align-items: center;
 // }
 
-.basket{
+.basket {
     display: flex;
 }
 
@@ -86,18 +86,18 @@
     text-decoration: none;
 }
 
-.basket p{
+.basket p {
     margin: 0;
 }
 
-.orders{
+.orders {
     padding: 0.5rem;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
     font-size: 1.5rem;
     color: black;
 }
 
-.basket-img{
+.basket-img {
     width: 3rem;
     padding: 1rem 0.5rem 1rem 1.5rem;
 }
@@ -113,34 +113,34 @@
     align-items: flex-end;
 }
 
-.order-count p{
+.order-count p {
     margin-right: 1rem;
     color: black;
-}  
+}
 
-.all-orders  {
+.all-orders {
     display: flex;
     align-items: center;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
     font-size: 1.25rem;
     color: black;
 }
 
-@include media-mixin ($mobile-breakpoint){
-    .company{
+@include media-mixin($mobile-breakpoint) {
+    .company {
         padding: 1rem 0.5rem 1rem 0.5rem;
     }
-    .trolley-img{
+    .trolley-img {
         width: 3rem;
     }
-    .company p{
+    .company p {
         font-size: medium;
         padding-left: 0.25rem;
     }
-    .basket > a{
+    .basket > a {
         font-size: medium;
     }
-    hr{
+    hr {
         margin: 0 0 0.5rem 0;
     }
 }
