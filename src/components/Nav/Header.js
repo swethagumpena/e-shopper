@@ -11,7 +11,7 @@ const Header = ({ cartCount }) => {
       <div className={theme === 'dark' ? 'header-dark' : 'header-light'}>
         {/* <div style={{ background: theme.backgroundColor }}> */}
         <div className="company">
-          <Link to="/"><img className="trolley-img" src="assets/trolley.jpg" alt="logo" /></Link>
+          <Link to="/"><img className="trolley-img" data-testid="trolley-img" src="assets/trolley.jpg" alt="logo" /></Link>
           {' '}
           <p>E-Shopper</p>
         </div>
@@ -25,9 +25,7 @@ const Header = ({ cartCount }) => {
               <div className="order-count">
                 <p>My Basket</p>
                 <p>
-                  {cartCount}
-                  {' '}
-                  items
+                  {`${cartCount} items`}
                 </p>
               </div>
             </div>
