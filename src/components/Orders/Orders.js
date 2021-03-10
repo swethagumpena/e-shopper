@@ -4,20 +4,18 @@ import './Orders.scss';
 
 const Orders = ({ orders }) => (
   <div>
-    {/* <p>{JSON.stringify(orders)}</p> */}
+    <p>{JSON.stringify(orders)}</p>
     <div className="basket-msg">
       All Orders
       <hr />
-      Past Orders (
-      {orders.length}
-      )
+      {`Past Orders (${orders.length})`}
     </div>
     <div>
       <table className="basket-table">
         <tbody>
           {orders.map((order) => (
-            <>
-              <tr key={order.id}>
+            <div key={order.id}>
+              <tr>
                 <th>ORDER</th>
                 <th>ITEMS</th>
                 <th>DATE</th>
@@ -55,25 +53,24 @@ const Orders = ({ orders }) => (
                 <td />
               </tr>
               {order.items.map((eachItem) => (
-                <>
-                  <tr key={eachItem.id}>
-                    <td>{eachItem.productName}</td>
-                    <td className="items-align">
-                      Rs.
-                      {' '}
-                      {eachItem.price}
-                      .00
-                    </td>
-                    <td className="items-align">{eachItem.quantity}</td>
-                    <td className="items-align">
-                      Rs.
-                      {' '}
-                      {eachItem.price * eachItem.quantity}
-                      .00
-                    </td>
-                  </tr>
 
-                </>
+                <tr key={eachItem.id}>
+                  <td>{eachItem.productName}</td>
+                  <td className="items-align">
+                    Rs.
+                    {' '}
+                    {eachItem.price}
+                    .00
+                  </td>
+                  <td className="items-align">{eachItem.quantity}</td>
+                  <td className="items-align">
+                    Rs.
+                    {' '}
+                    {eachItem.price * eachItem.quantity}
+                    .00
+                  </td>
+                </tr>
+
               ))}
               <tr>
                 <td />
@@ -89,7 +86,7 @@ const Orders = ({ orders }) => (
                   </p>
                 </td>
               </tr>
-            </>
+            </div>
           ))}
         </tbody>
 
@@ -107,8 +104,18 @@ const productShape = {
   url: PropTypes.string,
 };
 
+const orderShape = {
+  orderId: PropTypes.number,
+  itemsCount: PropTypes.number,
+  date: PropTypes.string,
+  time: PropTypes.string,
+  amount: PropTypes.number,
+  items: PropTypes.arrayOf(PropTypes.shape(productShape)),
+};
+
 Orders.propTypes = {
-  orders: PropTypes.arrayOf(PropTypes.shape(productShape)).isRequired,
+  orders: PropTypes.arrayOf(PropTypes.shape(orderShape)).isRequired,
+
 };
 
 export default Orders;

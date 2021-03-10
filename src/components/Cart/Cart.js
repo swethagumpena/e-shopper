@@ -17,10 +17,7 @@ const Cart = ({ cartItems }) => {
 
     <div>
       <div className="basket-msg">
-        Your Basket (
-        {cartItems.length}
-        {'  '}
-        items)
+        {`Your Basket (${cartItems.length} items)`}
         <hr />
       </div>
       <table className="basket-table">
@@ -42,17 +39,11 @@ const Cart = ({ cartItems }) => {
             <tr key={eachItem.id}>
               <td>{eachItem.productName}</td>
               <td className="items-align">
-                Rs.
-                {' '}
-                {eachItem.price}
-                .00
+                {`Rs. ${eachItem.price}.00`}
               </td>
               <td className="items-align">{eachItem.quantity}</td>
               <td className="items-align">
-                Rs.
-                {' '}
-                {eachItem.price * eachItem.quantity}
-                .00
+                {`Rs. ${eachItem.price * eachItem.quantity}.00`}
               </td>
             </tr>
           ))}
@@ -65,11 +56,9 @@ const Cart = ({ cartItems }) => {
           <div className="total-amount">
             <p>TOTAL</p>
             <p>
-              Rs.
-              {' '}
-              {cartItems.reduce((accumulator, eachItem) => (
+              {`Rs. $cartItems.reduce((accumulator, eachItem) => (
                 accumulator + eachItem.price * eachItem.quantity), 0)}
-              .00
+              .00`}
             </p>
           </div>
           <div className="horizontal-line">

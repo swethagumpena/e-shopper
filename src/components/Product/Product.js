@@ -1,22 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ProductQuantity from '../Counter/Counter';
+import Counter from '../Counter/Counter';
 import styles from './Product.module.scss';
 
 const Product = ({ product, onIncrement, onDecrement }) => (
   <div className={styles.productCard}>
-    <img id={styles.productImg} src={product.url} alt="product" />
+    <img data-testid="product-img" id={styles.productImg} src={product.url} alt="product" />
     <div className={styles.priceQuantityContainer}>
       <h4>{product.productName}</h4>
       <p>1 kg</p>
       <div className={styles.priceQuantity}>
         <p className={styles.productPrice}>
-          MRP
-          {' '}
-          {product.price}
-          /-
+          {`MRP ${product.price}/-`}
         </p>
-        <ProductQuantity
+        <Counter
           value={product.quantity}
           onIncrement={onIncrement}
           onDecrement={onDecrement}
