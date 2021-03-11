@@ -17,7 +17,7 @@ describe(Orders, () => {
     items: [
       {
         id: 1,
-        productName: 'Banana',
+        name: 'Banana',
         quantity: 1,
         price: 40,
         url: 'assets/banana.png',
@@ -25,12 +25,12 @@ describe(Orders, () => {
     ],
   }];
 
-  test('should display All orders', () => {
-    // const { container } = render(<Orders orders={mockOrders} />);
-    render(<Orders orders={mockOrders} />);
-    expect(screen.getByText('All Orders'));
-    // getAllByTestId('')
-    //     expect(container.querySelector('.basket-table td')).toBe([]);
-    // container.querySelector('')
-  });
+//   test('should display All orders', () => {
+//     // const { container } = render(<Orders orders={mockOrders} />);
+//     render(<Orders orders={mockOrders} />);
+//     expect(screen.getByText('All Orders'));
+  // getAllByTestId('')
+  //     expect(container.querySelector('.basket-table td')).toBe([]);
+  // container.querySelector('')
+//   });
 });

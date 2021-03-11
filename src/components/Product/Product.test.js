@@ -17,7 +17,7 @@ describe(Product.name, () => {
     product: {
 
       id: 1,
-      productName: 'Banana',
+      name: 'Banana',
       quantity: 0,
       price: 40,
       url: 'xyz.com',
@@ -37,7 +37,7 @@ describe(Product.name, () => {
     //   product={
     //     {
     //       id: 1,
-    //       productName: 'Banana',
+    //       name: 'Banana',
     //       quantity: 0,
     //       price: 40,
     //       url: 'xyz.com',

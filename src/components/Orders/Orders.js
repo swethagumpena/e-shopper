@@ -4,7 +4,7 @@ import './Orders.scss';
 
 const Orders = ({ orders }) => (
   <div>
-    <p>{JSON.stringify(orders)}</p>
+    {/* <p>{JSON.stringify(orders)}</p> */}
     <div className="basket-msg">
       All Orders
       <hr />
@@ -25,10 +25,10 @@ const Orders = ({ orders }) => (
                 <td className="items-align">
                   Order id:
                   {' '}
-                  {order.orderId}
+                  {order.id}
                 </td>
                 <td className="items-align">
-                  {order.itemsCount}
+                  {order.items.length}
                   {' '}
                   items
                 </td>
@@ -46,31 +46,32 @@ const Orders = ({ orders }) => (
                 <th>QUANTITY</th>
                 <th>SUB TOTAL</th>
               </tr>
-              <tr className="category">
-                <td>FRUITS</td>
-                <td />
-                <td />
-                <td />
-              </tr>
+
               {order.items.map((eachItem) => (
-
-                <tr key={eachItem.id}>
-                  <td>{eachItem.productName}</td>
-                  <td className="items-align">
-                    Rs.
-                    {' '}
-                    {eachItem.price}
-                    .00
-                  </td>
-                  <td className="items-align">{eachItem.quantity}</td>
-                  <td className="items-align">
-                    Rs.
-                    {' '}
-                    {eachItem.price * eachItem.quantity}
-                    .00
-                  </td>
-                </tr>
-
+                <>
+                  <tr className="category">
+                    <td>{eachItem.category}</td>
+                    <td />
+                    <td />
+                    <td />
+                  </tr>
+                  <tr key={eachItem.id}>
+                    <td>{eachItem.name}</td>
+                    <td className="items-align">
+                      Rs.
+                      {' '}
+                      {eachItem.price}
+                      .00
+                    </td>
+                    <td className="items-align">{eachItem.count}</td>
+                    <td className="items-align">
+                      Rs.
+                      {' '}
+                      {eachItem.price * eachItem.count}
+                      .00
+                    </td>
+                  </tr>
+                </>
               ))}
               <tr>
                 <td />
@@ -81,7 +82,7 @@ const Orders = ({ orders }) => (
                     TOTAL Rs.
                     {' '}
                     {order.items.reduce((accumulator, item) => (
-                      accumulator + item.price * item.quantity), 0)}
+                      accumulator + item.price * item.count), 0)}
                     .00
                   </p>
                 </td>
@@ -96,26 +97,44 @@ const Orders = ({ orders }) => (
   </div>
 );
 
-const productShape = {
+// const productShape = {
+//   id: PropTypes.number,
+//   name: PropTypes.string,
+//   quantity: PropTypes.number,
+//   price: PropTypes.number,
+//   url: PropTypes.string,
+// };
+
+// const orderShape = {
+//   orderId: PropTypes.number,
+//   itemsCount: PropTypes.number,
+//   date: PropTypes.string,
+//   time: PropTypes.string,
+//   amount: PropTypes.number,
+//   items: PropTypes.arrayOf(PropTypes.shape(productShape)),
+// };
+
+// Orders.propTypes = {
+//   orders: PropTypes.arrayOf(PropTypes.shape(orderShape)).isRequired,
+
+// };
+
+const itemShape = {
   id: PropTypes.number,
-  productName: PropTypes.string,
-  quantity: PropTypes.number,
+  name: PropTypes.string,
   price: PropTypes.number,
-  url: PropTypes.string,
+  count: PropTypes.number, // inCartCount now, not stock
+  category: PropTypes.string,
 };
 
 const orderShape = {
-  orderId: PropTypes.number,
-  itemsCount: PropTypes.number,
-  date: PropTypes.string,
-  time: PropTypes.string,
-  amount: PropTypes.number,
-  items: PropTypes.arrayOf(PropTypes.shape(productShape)),
+  id: PropTypes.number,
+  date: PropTypes.number,
+  items: PropTypes.arrayOf(PropTypes.shape(itemShape)),
 };
 
 Orders.propTypes = {
   orders: PropTypes.arrayOf(PropTypes.shape(orderShape)).isRequired,
-
 };
 
 export default Orders;

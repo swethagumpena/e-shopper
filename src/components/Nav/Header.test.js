@@ -15,12 +15,12 @@ describe(Header, () => {
     screen.getByText('All Orders');
   });
 
-  test('should display All orders', () => {
+  test('should display My Basket', () => {
     render(<BrowserRouter><Header cartCount={2} /></BrowserRouter>);
     screen.getByText('My Basket');
   });
 
-  test('should display All orders', () => {
+  test('should display Number of orders', () => {
     render(<BrowserRouter><Header cartCount={2} /></BrowserRouter>);
     screen.getByText('2 items');
   });

@@ -3,21 +3,17 @@ import PropTypes from 'prop-types';
 import './Cart.scss';
 // import { Link, useHistory } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
+// import { connect } from 'formik';
 
-const Cart = ({ cartItems }) => {
+const Cart = ({ cartCount, cartItems }) => {
   const history = useHistory();
-  // const handleClickHome = () => {
-  //   history.push('/');
-  // };
-  // const handleClickCheckout = () => {
-  //   history.push('/checkout');
-  // };
-
+  console.log(cartItems);
+  let total = 0;
   return (
 
     <div>
       <div className="basket-msg">
-        {`Your Basket (${cartItems.length} items)`}
+        {`Your Basket (${cartCount} items)`}
         <hr />
       </div>
       <table className="basket-table">
@@ -28,25 +24,35 @@ const Cart = ({ cartItems }) => {
             <th>QUANTITY</th>
             <th>SUB TOTAL</th>
           </tr>
-          <tr className="category">
-            <td>FRUITS</td>
-            <td />
-            <td />
-            <td />
-          </tr>
 
-          {cartItems.map((eachItem) => (
-            <tr key={eachItem.id}>
-              <td>{eachItem.productName}</td>
-              <td className="items-align">
-                {`Rs. ${eachItem.price}.00`}
-              </td>
-              <td className="items-align">{eachItem.quantity}</td>
-              <td className="items-align">
-                {`Rs. ${eachItem.price * eachItem.quantity}.00`}
-              </td>
-            </tr>
-          ))}
+          {Object.keys(cartItems).map((category) => {
+            if (cartItems[category].length === 0) { return <div />; }
+            return (
+              <>
+                <tr className="category" key={category}>
+                  <td>{category}</td>
+                  <td />
+                  <td />
+                  <td />
+                </tr>
+                {cartItems[category].map((eachItem) => {
+                  total += eachItem.price * eachItem.inCartCount;
+                  return (
+                    <tr key={eachItem.id}>
+                      <td>{eachItem.name}</td>
+                      <td className="items-align">
+                        {`Rs. ${eachItem.price}.00`}
+                      </td>
+                      <td className="items-align">{eachItem.inCartCount}</td>
+                      <td className="items-align">
+                        {`Rs. ${eachItem.price * eachItem.inCartCount}.00`}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </>
+            );
+          })}
         </tbody>
 
       </table>
@@ -56,9 +62,11 @@ const Cart = ({ cartItems }) => {
           <div className="total-amount">
             <p>TOTAL</p>
             <p>
-              {`Rs. $cartItems.reduce((accumulator, eachItem) => (
+              {`Rs. ${total}.00`}
+
+              {/* {`Rs. ${cartItems}.reduce((accumulator, eachItem) => (
                 accumulator + eachItem.price * eachItem.quantity), 0)}
-              .00`}
+              .00`} */}
             </p>
           </div>
           <div className="horizontal-line">
@@ -70,7 +78,7 @@ const Cart = ({ cartItems }) => {
                 CHECKOUT =&gt;
               </button>
             </Link> */}
-            <button type="button" onClick={() => history.push('/checkout')}>CHECKOUT =&gt;</button>
+            <button type="button" onClick={() => history.push('/checkout')}>CHECKOUT</button>
           </div>
         </div>
         <div className="continue-shopping">
@@ -85,14 +93,24 @@ const Cart = ({ cartItems }) => {
   );
 };
 
+const productShape = PropTypes.shape({
+  id: PropTypes.number,
+  name: PropTypes.string,
+  // quantity: PropTypes.number,
+  price: PropTypes.number,
+  // url: PropTypes.string,
+  count: PropTypes.number,
+  inCartCount: PropTypes.number,
+  category: PropTypes.string,
+});
+
 Cart.propTypes = {
-  cartItems: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    productName: PropTypes.string.isRequired,
-    quantity: PropTypes.number.isRequired,
-    price: PropTypes.number.isRequired,
-    url: PropTypes.string.isRequired,
-  })).isRequired,
+  cartItems: PropTypes.objectOf(PropTypes.arrayOf(productShape)).isRequired,
+  cartCount: PropTypes.number.isRequired,
 };
+
+// Cart.defaultProps = {
+//   cartCount: 0,
+// };
 
 export default Cart;
