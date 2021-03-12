@@ -108,4 +108,11 @@ describe(App, () => {
     screen.getByText('0 in basket');
     screen.getByText('Stock: 20');
   });
+
+  test('should display button to toggle theme', async () => {
+    await waitFor(() => render(<App />));
+    const toggleTheme = screen.getByText('Change Theme');
+    expect(toggleTheme.tagName).toBe('BUTTON');
+    act(() => { fireEvent.click(toggleTheme); });
+  });
 });

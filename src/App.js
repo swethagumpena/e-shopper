@@ -1,4 +1,3 @@
-// import React, { Component } from 'react';
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
@@ -10,11 +9,9 @@ import Orders from './components/Orders/Orders';
 import CheckoutForm from './components/CheckoutForm/CheckoutForm';
 import ThemeContext, { themes } from './ThemeContext';
 import ApiUtils from './utils/api';
-// import CounterInc from './components/CounterInc';
 
 const App = () => {
   const [theme, setTheme] = useState(themes.light);
-  // const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState({});
   const [cartCount, setCartCount] = useState(0);
   const [cartItems, setCartItems] = useState({});
@@ -22,132 +19,26 @@ const App = () => {
   const [error, setError] = useState(null);
   const [isLoaded, setLoaded] = useState('false');
 
-  // const [products, setProducts] = useState([
-  //   {
-  //     id: 1,
-  //     name: 'Banana',
-  //     quantity: 0,
-  //     price: 40,
-  //     url: 'assets/banana.png',
-  //   },
-  //   {
-  //     id: 2,
-  //     name: 'Cherry',
-  //     quantity: 0,
-  //     price: 40,
-  //     url: 'assets/cherry.png',
-  //   },
-  //   {
-  //     id: 3,
-  //     name: 'Grape',
-  //     quantity: 0,
-  //     price: 40,
-  //     url: 'assets/grape.png',
-  //   },
-  //   {
-  //     id: 4,
-  //     name: 'Mango',
-  //     quantity: 0,
-  //     price: 40,
-  //     url: 'assets/mango.png',
-  //   }, {
-  //     id: 5,
-  //     name: 'Orange',
-  //     quantity: 0,
-  //     price: 40,
-  //     url: 'assets/orange.png',
-  //   }, {
-  //     id: 6,
-  //     name: 'Peach',
-  //     quantity: 0,
-  //     price: 40,
-  //     url: 'assets/peach.png',
-  //   }, {
-  //     id: 7,
-  //     name: 'Pineapple',
-  //     quantity: 0,
-  //     price: 40,
-  //     url: 'assets/pineapple.png',
-  //   }, {
-  //     id: 8,
-  //     name: 'Strawberry',
-  //     quantity: 0,
-  //     price: 40,
-  //     url: 'assets/strawberry.png',
-  //   },
-  // ]);
-
-  // const [orders, setOrders] = useState([
-  //   {
-  //     orderId: 1,
-  //     itemsCount: 3,
-  //     date: 'Sun 04 Mar 2018',
-  //     time: '10:01pm',
-  //     amount: 883,
-  //     items: [
-  //       {
-  //         id: 1,
-  //         name: 'Banana',
-  //         quantity: 1,
-  //         price: 40,
-  //         url: 'assets/banana.png',
-  //       },
-  //       {
-  //         id: 2,
-  //         name: 'Cherry',
-  //         quantity: 2,
-  //         price: 40,
-  //         url: 'assets/cherry.png',
-  //       },
-  //       {
-  //         id: 3,
-  //         name: 'Grapes',
-  //         quantity: 1,
-  //         price: 40,
-  //         url: 'assets/grape.png',
-  //       },
-  //     ],
-  //   }, {
-  //     orderId: 2,
-  //     itemsCount: 3,
-  //     date: 'Sun 04 Mar 2018',
-  //     time: '10:01pm',
-  //     amount: 883.00,
-  //     items: [
-  //       {
-  //         id: 1,
-  //         name: 'Banana',
-  //         quantity: 1,
-  //         price: 40,
-  //         url: 'assets/banana.png',
-  //       },
-  //       {
-  //         id: 2,
-  //         name: 'Cherry',
-  //         quantity: 2,
-  //         price: 40,
-  //         url: 'assets/cherry.png',
-  //       },
-  //       {
-  //         id: 3,
-  //         name: 'Grapes',
-  //         quantity: 1,
-  //         price: 40,
-  //         url: 'assets/grape.png',
-  //       },
-  //     ],
-  //   }]);
-
   const groupByCategory = (items) => {
-    const groupedProducts = {};
-    items.forEach((product) => {
-      if (!(product.category in groupedProducts)) {
-        groupedProducts[product.category] = [];
-      }
-      groupedProducts[product.category].push(product);
-    });
-    return groupedProducts;
+    const groupedByCategory = items.reduce((groupedProducts, item) => {
+      const currentCategory = item.category;
+      const prevProductsOfSameCategory = groupedProducts[currentCategory] || [];
+      return {
+        ...groupedProducts,
+        [currentCategory]: [...prevProductsOfSameCategory, item],
+      };
+    }, {});
+    return groupedByCategory;
   };
+  //   const groupedProducts = {};
+  //   items.forEach((product) => {
+  //     if (!(product.category in groupedProducts)) {
+  //       groupedProducts[product.category] = [];
+  //     }
+  //     groupedProducts[product.category].push(product);
+  //   });
+  //   return groupedProducts;
+  // };
   // groupByCategory takes in array; returns object
 
   useEffect(async () => {
@@ -165,8 +56,6 @@ const App = () => {
   }, []);
 
   useEffect(async () => {
-    // const { data } = await axios.get('http://localhost:8080/orders');
-    // const ordersInfo = data.data;
     const ordersInfo = await ApiUtils.getOrders();
     console.log('orders', ordersInfo);
     setOrders(ordersInfo);
@@ -183,8 +72,6 @@ const App = () => {
     const itemsInCart = Object.values(cartItems).flat();
     // ARRAY OF OBJECTS
     const currentOrder = { items: itemsInCart };
-    // const updatedOrders = [...orders, currentOrder]; // spread in [] coz orders initialy array
-    // setOrders(updatedOrders);
     return currentOrder;
   };
 
@@ -198,7 +85,6 @@ const App = () => {
 
   const onIncrement = (item, category) => {
     if (item.count > 0) {
-      // console.log(category, item.id);
       // eslint-disable-next-line max-len
       const newProducts = filteredProducts[category].map((eachProduct) => ((eachProduct.id === item.id) ? {
         ...eachProduct,
@@ -263,7 +149,6 @@ const App = () => {
   return (
     <>
       <BrowserRouter>
-        {/* <CounterInc /> */}
         <ThemeContext.Provider value={theme}>
           <Header cartCount={cartCount} />
         </ThemeContext.Provider>
@@ -305,207 +190,5 @@ const App = () => {
     </>
   );
 };
-
-// class App extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       cartItems: [],
-//       productObjects: [
-//         {
-//           id: 1,
-//           name: 'Banana',
-//           quantity: 0,
-//           price: 40,
-//           url: 'assets/banana.png',
-//         },
-//         {
-//           id: 2,
-//           name: 'Cherry',
-//           quantity: 0,
-//           price: 40,
-//           url: 'assets/cherry.png',
-//         },
-//         {
-//           id: 3,
-//           name: 'Grape',
-//           quantity: 0,
-//           price: 40,
-//           url: 'assets/grape.png',
-//         },
-//         {
-//           id: 4,
-//           name: 'Mango',
-//           quantity: 0,
-//           price: 40,
-//           url: 'assets/mango.png',
-//         }, {
-//           id: 5,
-//           name: 'Orange',
-//           quantity: 0,
-//           price: 40,
-//           url: 'assets/orange.png',
-//         }, {
-//           id: 6,
-//           name: 'Peach',
-//           quantity: 0,
-//           price: 40,
-//           url: 'assets/peach.png',
-//         }, {
-//           id: 7,
-//           name: 'Pineapple',
-//           quantity: 0,
-//           price: 40,
-//           url: 'assets/pineapple.png',
-//         }, {
-//           id: 8,
-//           name: 'Strawberry',
-//           quantity: 0,
-//           price: 40,
-//           url: 'assets/strawberry.png',
-//         },
-//       ],
-//       cartCount: 0,
-//       orders: [
-//         {
-//           orderId: 1,
-//           itemsCount: 3,
-//           date: 'Sun 04 Mar 2018',
-//           time: '10:01pm',
-//           amount: 883,
-//           items: [
-//             {
-//               id: 1,
-//               name: 'Banana',
-//               quantity: 1,
-//               price: 40,
-//               url: 'assets/banana.png',
-//             },
-//             {
-//               id: 2,
-//               name: 'Cherry',
-//               quantity: 2,
-//               price: 40,
-//               url: 'assets/cherry.png',
-//             },
-//             {
-//               id: 3,
-//               name: 'Grapes',
-//               quantity: 1,
-//               price: 40,
-//               url: 'assets/grape.png',
-//             },
-//           ],
-//         }, {
-//           orderId: 2,
-//           itemsCount: 3,
-//           date: 'Sun 04 Mar 2018',
-//           time: '10:01pm',
-//           amount: 883.00,
-//           items: [
-//             {
-//               id: 1,
-//               name: 'Banana',
-//               quantity: 1,
-//               price: 40,
-//               url: 'assets/banana.png',
-//             },
-//             {
-//               id: 2,
-//               name: 'Cherry',
-//               quantity: 2,
-//               price: 40,
-//               url: 'assets/cherry.png',
-//             },
-//             {
-//               id: 3,
-//               name: 'Grapes',
-//               quantity: 1,
-//               price: 40,
-//               url: 'assets/grape.png',
-//             },
-//           ],
-//         }],
-//     };
-//   }
-
-//   onIncrement = (id) => {
-//     const { productObjects } = this.state;
-//     this.setState((prevState) => {
-//       let newState = {
-//         ...prevState,
-//         cartCount: prevState.cartCount + 1,
-//         productObjects: productObjects.map((eachProduct) => {
-//           if (eachProduct.id === id) {
-//             return { ...eachProduct, quantity: eachProduct.quantity + 1 };
-//           }
-//           return eachProduct;
-//         }),
-//       };
-
-//       newState = {
-//         ...newState,
-//         cartItems: newState.productObjects.filter((product) => product.quantity > 0),
-//       };
-//       // this.setState(newState, () => console.log('bb', this.state));
-//       return newState;
-//     });
-//   }
-
-//   onDecrement(item) { // passing item and not id, coz we  need to  check item's quantity
-//     if (item.quantity === 0) {
-//       return;
-//     }
-//     const { productObjects, cartCount } = this.state;
-//     const newState = {
-//       ...this.state,
-//       cartCount: cartCount - 1,
-//       productObjects: productObjects.map((eachProduct) => {
-//         if (eachProduct.id === item.id) {
-//           return { ...eachProduct, quantity: eachProduct.quantity - 1 };
-//         }
-//         return { ...eachProduct };
-//       }),
-//     };
-//     this.setState(newState);
-//   }
-
-//   render() {
-//     const {
-//       cartCount, productObjects, cartItems, orders,
-//     } = this.state;
-//     return (
-//       <>
-//         <BrowserRouter>
-//           {/* <CounterInc /> */}
-//           <Header cartCount={cartCount} />
-//           <Switch>
-//             <Route path="/" exact>
-//               <Home
-//                 productObjects={productObjects}
-//                 onIncrement={(id) => { this.onIncrement(id); }}
-//                 onDecrement={(item) => { this.onDecrement(item); }}
-//               />
-//             </Route>
-//             <Route path="/cart">
-//               <Cart
-//                 cartItems={cartItems}
-//               />
-//             </Route>
-//             <Route path="/orders">
-//               <Orders
-//                 orders={orders}
-//               />
-//             </Route>
-//             <Route path="/checkout">
-//               <CheckoutForm />
-//             </Route>
-//           </Switch>
-//         </BrowserRouter>
-
-//       </>
-//     );
-//   }
-// }
 
 export default App;
