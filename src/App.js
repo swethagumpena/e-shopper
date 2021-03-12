@@ -1,6 +1,5 @@
 // import React, { Component } from 'react';
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 import './Normalize.css';
@@ -10,6 +9,7 @@ import Cart from './components/Cart/Cart';
 import Orders from './components/Orders/Orders';
 import CheckoutForm from './components/CheckoutForm/CheckoutForm';
 import ThemeContext, { themes } from './ThemeContext';
+import ApiUtils from './utils/api';
 // import CounterInc from './components/CounterInc';
 
 const App = () => {
@@ -152,20 +152,12 @@ const App = () => {
 
   useEffect(async () => {
     try {
-      const { data, err } = await axios.get('http://localhost:8080/items');
-      const items = data.data;
-
-      if (items) {
-        const updatedProduct = items.map((eachItem) => ({
-          ...eachItem,
-          inCartCount: 0, // add a new key
-        }));
-        // setProducts(updatedProduct);
+      const updatedProduct = await ApiUtils.getItems();
+      if (updatedProduct) {
         setFilteredProducts(groupByCategory(updatedProduct));
         setLoaded(true);
-      } else if (err) {
+      } else {
         setLoaded(true);
-        setError(err);
       }
     } catch (e) {
       setError(e);
@@ -173,8 +165,9 @@ const App = () => {
   }, []);
 
   useEffect(async () => {
-    const { data } = await axios.get('http://localhost:8080/orders');
-    const ordersInfo = data.data;
+    // const { data } = await axios.get('http://localhost:8080/orders');
+    // const ordersInfo = data.data;
+    const ordersInfo = await ApiUtils.getOrders();
     console.log('orders', ordersInfo);
     setOrders(ordersInfo);
     // const categorisedOrders = ordersInfo.map((order) => ({

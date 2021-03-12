@@ -41,14 +41,16 @@
     font-weight: bold;
 }
 
-@include media-mixin($laptop-breakpoint){
-    .productCard {
-        width:  calc((100% - (6 * 0.5rem + 6 * 0.5rem + 6 * 0.125rem)) / 3);
-    }
-    #productImg {
-        height: 18.75rem;
-    }
-}
+//FIX THIS
+// @include media-mixin($laptop-breakpoint){
+//     .productCard {
+//         width:  calc((100% - (6 * 0.5rem + 6 * 0.5rem + 6 * 0.125rem)) / 3);
+//     }
+//     #productImg {
+//         height: 18.75rem;
+//     }
+// }
+
 // @media (max-width: 72rem) {         /*ipad pro/laptop: 1024*/
 //     .productCard {
 //         width:  calc((100% - (6 * 0.5rem + 6 * 0.5rem + 6 * 0.125rem)) / 3);

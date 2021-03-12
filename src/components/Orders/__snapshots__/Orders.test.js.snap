@@ -68,16 +68,6 @@ exports[`Orders should match snapshot 1`] = `
               SUB TOTAL
             </th>
           </tr>
-          <tr
-            class="category"
-          >
-            <td>
-              Fruits & Vegatables
-            </td>
-            <td />
-            <td />
-            <td />
-          </tr>
           <tr>
             <td>
               banana

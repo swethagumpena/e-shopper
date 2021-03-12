@@ -79,17 +79,33 @@ describe(App, () => {
     expect(document.location.href).toBe('http://localhost/');
   });
 
-  test('should fetch the data from external API call', async () => {
-    const spyOnAxios = jest.spyOn(axios, 'get').mockResolvedValue({
-      data: [
-        {
-          id: 1,
-          name: 'apple',
-          price: 120,
-          count: 20,
-          category: 'Fruits & Vegatables',
-        }],
-    });
-    const mockUrl = 'xyz.com';
+  //   test('should fetch the data from external API call', async () => {
+  //     const spyOnAxios = jest.spyOn(axios, 'get').mockResolvedValue({
+  //       data: [
+  //         {
+  //           id: 1,
+  //           name: 'apple',
+  //           price: 120,
+  //           count: 20,
+  //           category: 'Fruits & Vegatables',
+  //         }],
+  //     });
+  //     const mockUrl = 'xyz.com';
+  //   });
+
+  test('should increment cart count by 1 when + is clicked', async () => {
+    await waitFor(() => render(<App />));
+    const incrementCartElement = screen.getByText('+');
+    act(() => { fireEvent.click(incrementCartElement); });
+    screen.getByText('1 in basket');
+    screen.getByText('Stock: 19');
+  });
+
+  test('should decrement cart count by 1 when - is clicked', async () => {
+    await waitFor(() => render(<App />));
+    const incrementCartElement = screen.getByText('-');
+    act(() => { fireEvent.click(incrementCartElement); });
+    screen.getByText('0 in basket');
+    screen.getByText('Stock: 20');
   });
 });
