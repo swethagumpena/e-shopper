@@ -1,5 +1,5 @@
 import {
-  render, screen, fireEvent, getAllByTestId,
+  render, screen,
 } from '@testing-library/react';
 import React from 'react';
 import Orders from './Orders';
@@ -9,28 +9,38 @@ describe(Orders, () => {
     jest.clearAllMocks();
   });
   const mockOrders = [{
-    orderId: 1,
-    itemsCount: 3,
-    date: 'Sun 04 Mar 2018',
-    time: '10:01pm',
-    amount: 883,
     items: [
       {
-        id: 1,
-        name: 'Banana',
-        quantity: 1,
-        price: 40,
-        url: 'assets/banana.png',
+        id: 7,
+        name: 'banana',
+        price: 5,
+        count: 46,
+        category: 'Fruits & Vegatables',
+        inCartCount: 2,
       },
     ],
+    id: 1,
+    date: 1615525171927,
   }];
 
-//   test('should display All orders', () => {
-//     // const { container } = render(<Orders orders={mockOrders} />);
-//     render(<Orders orders={mockOrders} />);
-//     expect(screen.getByText('All Orders'));
-  // getAllByTestId('')
-  //     expect(container.querySelector('.basket-table td')).toBe([]);
-  // container.querySelector('')
-//   });
+  test('should match snapshot', () => {
+    const { container } = render(<Orders orders={mockOrders} />);
+    expect(container).toMatchSnapshot();
+  });
+
+  test('should display All orders', () => {
+    render(<Orders orders={mockOrders} />);
+    screen.logTestingPlaygroundURL();
+    expect(screen.getByText('All Orders'));
+  });
+
+  test('should display Past orders and number of orders', () => {
+    render(<Orders orders={mockOrders} />);
+    expect(screen.getByText('Past Orders (1)'));
+  });
+
+  test('should display all orders table', () => {
+    render(<Orders orders={mockOrders} />);
+    expect(screen.getByTestId('all-orders-table'));
+  });
 });

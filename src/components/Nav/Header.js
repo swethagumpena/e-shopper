@@ -15,12 +15,12 @@ const Header = ({ cartCount }) => {
           {' '}
           <p>E-Shopper</p>
         </div>
-        <div className="basket">
+        <div data-testid="All-Orders" className="basket">
           <Link to="/orders" className="all-orders">
             All Orders
           </Link>
           <Link to="/cart">
-            <div className="cart">
+            <div className="cart" data-testid="My-Basket">
               <img className="basket-img" src="assets/basket.jpeg" alt="basket" />
               <div className="order-count">
                 <p>My Basket</p>

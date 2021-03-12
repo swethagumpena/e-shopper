@@ -5,7 +5,7 @@ import axios from 'axios';
 import CheckoutSchema from '../../utils/validators/CheckoutSchema';
 import styles from './CheckoutForm.module.css';
 
-const CheckoutForm = ({ addNewOrder, onSubmitReset }) => {
+const CheckoutForm = ({ addNewOrder, onSubmitReset, updateAllOrders }) => {
   const [checkoutForm, setCheckoutForm] = useState({
     formData: {
       firstName: '',
@@ -19,6 +19,7 @@ const CheckoutForm = ({ addNewOrder, onSubmitReset }) => {
   const postCartData = async (cartData) => {
     const response = await axios.post('http://localhost:8080/orders', cartData);
     console.log(response);
+    updateAllOrders(response.data.data);
   };
 
   const formik = useFormik({

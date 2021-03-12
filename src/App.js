@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable no-unused-vars */
 // import React, { Component } from 'react';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -14,15 +12,9 @@ import CheckoutForm from './components/CheckoutForm/CheckoutForm';
 import ThemeContext, { themes } from './ThemeContext';
 // import CounterInc from './components/CounterInc';
 
-// const getAllItems = async (url) => {
-//   const apiResponse = await axios.get(url);
-//   const jsonResponse = apiResponse.date;
-//   console.log(jsonResponse);
-// };
-
 const App = () => {
   const [theme, setTheme] = useState(themes.light);
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState({});
   const [cartCount, setCartCount] = useState(0);
   const [cartItems, setCartItems] = useState({});
@@ -168,7 +160,7 @@ const App = () => {
           ...eachItem,
           inCartCount: 0, // add a new key
         }));
-        setProducts(updatedProduct);
+        // setProducts(updatedProduct);
         setFilteredProducts(groupByCategory(updatedProduct));
         setLoaded(true);
       } else if (err) {
@@ -181,7 +173,7 @@ const App = () => {
   }, []);
 
   useEffect(async () => {
-    const { data, err } = await axios.get('http://localhost:8080/orders');
+    const { data } = await axios.get('http://localhost:8080/orders');
     const ordersInfo = data.data;
     console.log('orders', ordersInfo);
     setOrders(ordersInfo);
@@ -198,11 +190,13 @@ const App = () => {
     const itemsInCart = Object.values(cartItems).flat();
     // ARRAY OF OBJECTS
     const currentOrder = { items: itemsInCart };
-    const updatedOrders = [...orders, currentOrder]; // spread in [] coz orders initialy array
-    setOrders(updatedOrders);
+    // const updatedOrders = [...orders, currentOrder]; // spread in [] coz orders initialy array
+    // setOrders(updatedOrders);
     return currentOrder;
+  };
 
-    // console.log('swee', orders);
+  const updateAllOrders = (orderResponse) => {
+    setOrders([...orders, orderResponse]);
   };
 
   const onSubmitReset = () => {
@@ -212,6 +206,7 @@ const App = () => {
   const onIncrement = (item, category) => {
     if (item.count > 0) {
       // console.log(category, item.id);
+      // eslint-disable-next-line max-len
       const newProducts = filteredProducts[category].map((eachProduct) => ((eachProduct.id === item.id) ? {
         ...eachProduct,
         inCartCount: eachProduct.inCartCount + 1,
@@ -261,6 +256,17 @@ const App = () => {
     setTheme(theme === themes.dark ? themes.light : themes.dark);
   };
 
+  if (error !== null) {
+    return (
+      <div>error.message</div>
+    );
+  }
+  if (!isLoaded) {
+    return (
+      <div>Loading...</div>
+    );
+  }
+
   return (
     <>
       <BrowserRouter>
@@ -297,6 +303,7 @@ const App = () => {
               addNewOrder={addNewOrder}
               onSubmitReset={onSubmitReset}
               cartItems={cartItems}
+              updateAllOrders={updateAllOrders}
             />
           </Route>
         </Switch>

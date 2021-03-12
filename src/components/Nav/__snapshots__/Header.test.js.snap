@@ -26,6 +26,7 @@ exports[`Header should match snapshot for theme dark 1`] = `
     </div>
     <div
       class="basket"
+      data-testid="All-Orders"
     >
       <a
         class="all-orders"
@@ -38,6 +39,7 @@ exports[`Header should match snapshot for theme dark 1`] = `
       >
         <div
           class="cart"
+          data-testid="My-Basket"
         >
           <img
             alt="basket"
@@ -88,6 +90,7 @@ exports[`Header should match snapshot for theme light 1`] = `
     </div>
     <div
       class="basket"
+      data-testid="All-Orders"
     >
       <a
         class="all-orders"
@@ -100,6 +103,7 @@ exports[`Header should match snapshot for theme light 1`] = `
       >
         <div
           class="cart"
+          data-testid="My-Basket"
         >
           <img
             alt="basket"

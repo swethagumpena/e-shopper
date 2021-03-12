@@ -26,6 +26,7 @@ exports[`App should match snapshot 1`] = `
     </div>
     <div
       class="basket"
+      data-testid="All-Orders"
     >
       <a
         class="all-orders"
@@ -38,6 +39,7 @@ exports[`App should match snapshot 1`] = `
       >
         <div
           class="cart"
+          data-testid="My-Basket"
         >
           <img
             alt="basket"
@@ -72,7 +74,73 @@ exports[`App should match snapshot 1`] = `
     <div
       class="products"
       data-testid="home"
-    />
+    >
+      <div>
+        <div
+          class="category-name"
+        >
+          Fruits & Vegatables
+        </div>
+        <div
+          class="category-products"
+        >
+          <div
+            class="categories"
+            data-testid="product"
+          >
+            <div
+              class="productCard"
+            >
+              <img
+                alt="product"
+                data-testid="product-img"
+                id="productImg"
+                src="assets/banana.png"
+              />
+              <div
+                class="priceQuantityContainer"
+              >
+                <h4>
+                  apple
+                </h4>
+                <p>
+                  Stock: 20
+                </p>
+                <div
+                  class="priceQuantity"
+                >
+                  <p
+                    class="productPrice"
+                  >
+                    MRP 120/-
+                  </p>
+                  <div
+                    class="counter"
+                    data-testid="counter"
+                  >
+                    <button
+                      type="button"
+                    >
+                      -
+                    </button>
+                    <p
+                      class="containerQuantity0"
+                    >
+                      0 in basket
+                    </p>
+                    <button
+                      type="button"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;

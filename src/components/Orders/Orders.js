@@ -6,20 +6,19 @@ const Orders = ({ orders }) => (
   <div>
     {/* <p>{JSON.stringify(orders)}</p> */}
     <div className="basket-msg">
-      All Orders
+      <h3>All Orders</h3>
       <hr />
       {`Past Orders (${orders.length})`}
     </div>
     <div>
-      <table className="basket-table">
+      <table data-testid="all-orders-table" className="basket-table">
         <tbody>
           {orders.map((order) => {
-            console.log('jj', order);
             const orderDate = new Date(order.date);
             let total = 0;
             return (
-              <>
-                <tr key={order.id}>
+              <React.Fragment key={order.id}>
+                <tr>
                   <th>ORDER</th>
                   <th>ITEMS</th>
                   <th>DATE</th>
@@ -48,12 +47,12 @@ const Orders = ({ orders }) => (
                   total += eachItem.price * eachItem.inCartCount;
                   return (
                     <React.Fragment key={eachItem.id}>
-                      <tr className="category">
+                      {/* <tr className="category">
                         <td>{eachItem.category}</td>
                         <td />
                         <td />
                         <td />
-                      </tr>
+                      </tr> */}
                       <tr>
                         <td>{eachItem.name}</td>
                         <td className="items-align">
@@ -77,7 +76,7 @@ const Orders = ({ orders }) => (
                     </p>
                   </td>
                 </tr>
-              </>
+              </React.Fragment>
             );
           })}
         </tbody>

@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Orders should match snapshot 1`] = `
+<div>
+  <div>
+    <div
+      class="basket-msg"
+    >
+      <h3>
+        All Orders
+      </h3>
+      <hr />
+      Past Orders (1)
+    </div>
+    <div>
+      <table
+        class="basket-table"
+        data-testid="all-orders-table"
+      >
+        <tbody>
+          <tr>
+            <th>
+              ORDER
+            </th>
+            <th>
+              ITEMS
+            </th>
+            <th>
+              DATE
+            </th>
+            <th>
+              AMOUNT
+            </th>
+          </tr>
+          <tr>
+            <td
+              class="items-align"
+            >
+              Order id: 1
+            </td>
+            <td
+              class="items-align"
+            >
+              1 items
+            </td>
+            <td
+              class="items-align"
+            >
+              12 - 2 - 2021
+            </td>
+            <td
+              class="items-align"
+            >
+              Rs. 0.00
+            </td>
+          </tr>
+          <tr>
+            <th>
+              ITEM DESCRIPTION
+            </th>
+            <th>
+              UNIT PRICE
+            </th>
+            <th>
+              QUANTITY
+            </th>
+            <th>
+              SUB TOTAL
+            </th>
+          </tr>
+          <tr
+            class="category"
+          >
+            <td>
+              Fruits & Vegatables
+            </td>
+            <td />
+            <td />
+            <td />
+          </tr>
+          <tr>
+            <td>
+              banana
+            </td>
+            <td
+              class="items-align"
+            >
+              Rs. 5.00
+            </td>
+            <td
+              class="items-align"
+            >
+              2
+            </td>
+            <td
+              class="items-align"
+            >
+              Rs. 10.00
+            </td>
+          </tr>
+          <tr>
+            <td />
+            <td />
+            <td />
+            <td
+              class="total-data"
+            >
+              <p>
+                TOTAL Rs. 10.00
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+`;
