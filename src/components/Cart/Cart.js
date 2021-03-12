@@ -26,10 +26,10 @@ const Cart = ({ cartCount, cartItems }) => {
           </tr>
 
           {Object.keys(cartItems).map((category) => {
-            if (cartItems[category].length === 0) { return <div />; }
+            if (cartItems[category].length === 0) { return null; }
             return (
-              <>
-                <tr className="category" key={category}>
+              <React.Fragment key={category}>
+                <tr className="category">
                   <td>{category}</td>
                   <td />
                   <td />
@@ -50,7 +50,7 @@ const Cart = ({ cartCount, cartItems }) => {
                     </tr>
                   );
                 })}
-              </>
+              </React.Fragment>
             );
           })}
         </tbody>
@@ -96,9 +96,7 @@ const Cart = ({ cartCount, cartItems }) => {
 const productShape = PropTypes.shape({
   id: PropTypes.number,
   name: PropTypes.string,
-  // quantity: PropTypes.number,
   price: PropTypes.number,
-  // url: PropTypes.string,
   count: PropTypes.number,
   inCartCount: PropTypes.number,
   category: PropTypes.string,

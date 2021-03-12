@@ -15,13 +15,12 @@ describe(Product.name, () => {
   });
   const mockProps = {
     product: {
-
       id: 1,
       name: 'Banana',
-      quantity: 0,
       price: 40,
-      url: 'xyz.com',
-
+      count: 2,
+      inCartCount: 0,
+      category: 'Fruits',
     },
     onIncrement: jest.fn(),
     onDecrement: jest.fn(),
@@ -46,9 +45,9 @@ describe(Product.name, () => {
     //   onIncrement={() => {}}
     //   onDecrement={() => {}}
 
-    expect(screen.getByText('1 kg'));
     expect(screen.getByText('Banana'));
     expect(screen.getByText('MRP 40/-'));
+    expect(screen.getByText('Stock: 2'));
     expect(screen.getByTestId('product-img'));
     expect(screen.getByTestId('counter'));
   });

@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should match snapshot 1`] = `
+<div>
+  <div
+    class="header-light"
+    data-testid="header"
+  >
+    <div
+      class="company"
+    >
+      <a
+        href="/"
+      >
+        <img
+          alt="logo"
+          class="trolley-img"
+          data-testid="trolley-img"
+          src="assets/trolley.jpg"
+        />
+      </a>
+       
+      <p>
+        E-Shopper
+      </p>
+    </div>
+    <div
+      class="basket"
+    >
+      <a
+        class="all-orders"
+        href="/orders"
+      >
+        All Orders
+      </a>
+      <a
+        href="/cart"
+      >
+        <div
+          class="cart"
+        >
+          <img
+            alt="basket"
+            class="basket-img"
+            src="assets/basket.jpeg"
+          />
+          <div
+            class="order-count"
+          >
+            <p>
+              My Basket
+            </p>
+            <p>
+              0 items
+            </p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <hr />
+  <div
+    class="toggle-button"
+  >
+    <button
+      type="button"
+    >
+      Change Theme
+    </button>
+  </div>
+  <div>
+    <div
+      class="products"
+      data-testid="home"
+    />
+  </div>
+</div>
+`;

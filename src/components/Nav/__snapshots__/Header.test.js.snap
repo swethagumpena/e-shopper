@@ -4,6 +4,7 @@ exports[`Header should match snapshot for theme dark 1`] = `
 <div>
   <div
     class="header-dark"
+    data-testid="header"
   >
     <div
       class="company"
@@ -65,6 +66,7 @@ exports[`Header should match snapshot for theme light 1`] = `
 <div>
   <div
     class="header-light"
+    data-testid="header"
   >
     <div
       class="company"

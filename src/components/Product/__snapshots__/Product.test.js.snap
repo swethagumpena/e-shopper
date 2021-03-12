@@ -3,50 +3,55 @@
 exports[`Product should match snapshot 1`] = `
 <div>
   <div
-    class="productCard"
+    class="categories"
+    data-testid="product"
   >
-    <img
-      alt="product"
-      data-testid="product-img"
-      id="productImg"
-      src="xyz.com"
-    />
     <div
-      class="priceQuantityContainer"
+      class="productCard"
     >
-      <h4>
-        Banana
-      </h4>
-      <p>
-        1 kg
-      </p>
+      <img
+        alt="product"
+        data-testid="product-img"
+        id="productImg"
+        src="assets/banana.png"
+      />
       <div
-        class="priceQuantity"
+        class="priceQuantityContainer"
       >
-        <p
-          class="productPrice"
-        >
-          MRP 40/-
+        <h4>
+          Banana
+        </h4>
+        <p>
+          Stock: 2
         </p>
         <div
-          class="counter"
-          data-testid="counter"
+          class="priceQuantity"
         >
-          <button
-            type="button"
-          >
-            -
-          </button>
           <p
-            class="containerQuantity0"
+            class="productPrice"
           >
-            0 in basket
+            MRP 40/-
           </p>
-          <button
-            type="button"
+          <div
+            class="counter"
+            data-testid="counter"
           >
-            +
-          </button>
+            <button
+              type="button"
+            >
+              -
+            </button>
+            <p
+              class="containerQuantity0"
+            >
+              0 in basket
+            </p>
+            <button
+              type="button"
+            >
+              +
+            </button>
+          </div>
         </div>
       </div>
     </div>

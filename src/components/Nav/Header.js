@@ -8,7 +8,7 @@ const Header = ({ cartCount }) => {
   const theme = useContext(ThemeContext);
   return (
     <>
-      <div className={theme === 'dark' ? 'header-dark' : 'header-light'}>
+      <div data-testid="header" className={theme === 'dark' ? 'header-dark' : 'header-light'}>
         {/* <div style={{ background: theme.backgroundColor }}> */}
         <div className="company">
           <Link to="/"><img className="trolley-img" data-testid="trolley-img" src="assets/trolley.jpg" alt="logo" /></Link>

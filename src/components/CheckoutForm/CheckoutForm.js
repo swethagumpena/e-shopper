@@ -1,185 +1,100 @@
-import React, { Component } from 'react';
-import {
-  Formik, Field, Form,
-} from 'formik';
-import './CheckoutForm.css';
+/* eslint-disable react/prop-types */
+import { useFormik } from 'formik';
+import React, { useState } from 'react';
+import axios from 'axios';
+import CheckoutSchema from '../../utils/validators/CheckoutSchema';
+import styles from './CheckoutForm.module.css';
 
-const validateName = (value) => {
-  let errorMessage;
-  console.log(value);
-  if (!value) {
-    errorMessage = 'Required';
-  }
-  return errorMessage;
-};
-
-const validateEmail = (value) => {
-  let errorMessage;
-  if (!value) {
-    errorMessage = 'Required';
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-    errorMessage = 'Invalid email address';
-  }
-  return errorMessage;
-};
-
-const validatePhone = (value) => {
-  let errorMessage;
-  if (!value) {
-    errorMessage = 'Required';
-  } else if (!/^[6789]\d{9}$/i.test(value)) {
-    errorMessage = 'Invalid phone number';
-  }
-  return errorMessage;
-};
-
-class CheckoutForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: '',
+const CheckoutForm = ({ addNewOrder, onSubmitReset }) => {
+  const [checkoutForm, setCheckoutForm] = useState({
+    formData: {
+      firstName: '',
+      lastName: '',
       email: '',
-      phone: '',
-      data: '',
-    };
-  }
+      phoneNumber: '',
+    },
+    submitted: false,
+  });
 
-    handleChange = (event) => {
-      this.setState((prevState) => ({
-        ...prevState,
-        [event.target.name]: event.target.value,
-      }), () => {
-      });
-    };
+  const postCartData = async (cartData) => {
+    const response = await axios.post('http://localhost:8080/orders', cartData);
+    console.log(response);
+  };
 
-    handleSubmit = () => {
-      const { name, phone, email } = this.state;
-      let information = '';
-      console.log(phone);
-      information += `Name: ${name} \nPhone: ${phone}\nEmail: ${email}`;
-      this.setState({ data: information });
-    };
+  const formik = useFormik({
+    initialValues: checkoutForm.formData,
+    validationSchema: CheckoutSchema,
+    onSubmit: (formData) => setCheckoutForm({ formData, submitted: true }),
+  });
 
-    render() {
-      const {
-        data,
-      } = this.state;
-
-      return (
+  return (
+    <div className={styles.formContainer}>
+      <h1>Checkout</h1>
+      {!checkoutForm.submitted ? (
         <>
-          <Formik
-            initialValues={{ name: '', email: '', phone: '' }}
-            // onSubmit={(values) => alert(JSON.stringify(values, null, 2))}
-          >
-            {({ errors, touched }) => (
-              <Form>
-                <Field
-                  name="name"
-                  placeholder="Name"
-                  validate={validateName}
-                  // value={name}
-                  // onChange={this.handleChange}
-                />
-                {errors.name && touched.name ? <div>{errors.name}</div> : null}
-                <Field
-                  name="email"
-                  placeholder="Email"
-                  // value={email}
-                  // onChange={this.handleChange}
-                  validate={validateEmail}
-                />
-                {errors.email && touched.email ? <div>{errors.email}</div> : null}
-                <Field
-                  name="phone"
-                  placeholder="Phone number"
-                  // value={phone}
-                  // onChange={this.handleChange}
-                  validate={validatePhone}
-                />
-                {errors.phone && touched.phone ? <div>{errors.phone}</div> : null}
-                <input
-                  className="button"
-                  onClick={this.handleSubmit}
-                  type="button"
-                  value="Confirm"
-                />
-              </Form>
+          <p>Enter your details</p>
+          <form className={styles.form} onSubmit={formik.handleSubmit}>
+            <label htmlFor="firstName">
+              First Name:
+              <input
+                name="firstName"
+                type="text"
+                placeholder="Swetha"
+                onChange={formik.handleChange}
+              />
+            </label>
+            {formik.errors.firstName && (
+            <p>{formik.errors.firstName}</p>
             )}
-          </Formik>
-          <pre>{data}</pre>
+
+            <label htmlFor="lastName">
+              Last Name:
+              <input
+                name="lastName"
+                type="text"
+                placeholder="Gumpena"
+                onChange={formik.handleChange}
+              />
+            </label>
+            {formik.errors.lastName && (
+            <p>{formik.errors.lastName}</p>
+            )}
+
+            <label htmlFor="email">
+              Your email:
+              <input
+                name="email"
+                type="email"
+                placeholder="swetha_gumpena@example.com"
+                onChange={formik.handleChange}
+              />
+            </label>
+            {formik.errors.email && (
+            <p>{formik.errors.email}</p>
+            )}
+
+            <label htmlFor="phoneNumber">
+              Phone Number:
+              <input
+                name="phoneNumber"
+                type="number"
+                placeholder="987654321"
+                onChange={formik.handleChange}
+              />
+            </label>
+            {formik.errors.phoneNumber && (
+            <p>{formik.errors.phoneNumber}</p>
+            )}
+
+            <button type="submit" className={styles.submitButton} onClick={() => { postCartData(addNewOrder()); onSubmitReset(); }}>Place order</button>
+
+          </form>
         </>
-      );
-    }
-}
-
-// { /* const CheckoutForm = () => {
-//   const [userInfo, setUserInfo] = useState({
-//     name: '',
-//     phone: '',
-//     email: '',
-//     data: '',
-//   });
-
-//   const handleChange = (event) => {
-//     if (event.target.name === 'name') {
-//       const newData = { ...userInfo, name: event.target.value };
-//       setUserInfo(newData);
-//     } else if (event.target.name === 'phone') {
-//       const newData = { ...userInfo, phone: event.target.value };
-//       setUserInfo(newData);
-//     } else if (event.target.name === 'email') {
-//       const newData = { ...userInfo, email: event.target.value };
-//       setUserInfo(newData);
-//     }
-//   };
-
-//   const handleSubmit = () => {
-//     let information = '';
-//     // console.log(phone);
-//     information += `Name: ${name} \nPhone: ${phone}\nEmail: ${email}`;
-//     this.setState({ data: information });
-//   };
-
-//   return (
-//     <>
-//       <Formik
-//         initialValues={{ name: '', email: '', phone: '' }}
-//         // onSubmit={(values) => alert(JSON.stringify(values, null, 2))}
-//       >
-//         {({ errors, touched }) => (
-//           <Form>
-//             <Field
-//               name="name"
-//               placeholder="Name"
-//               validate={validateName}
-//               // value={name}
-//               onChange={handleChange}
-//             />
-//             {errors.name && touched.name ? <div>{errors.name}</div> : null}
-//             <Field
-//               name="email"
-//               placeholder="Email"
-//               // value={email}
-//               // onChange={this.handleChange}
-//               validate={validateEmail}
-//             />
-//             {errors.email && touched.email ? <div>{errors.email}</div> : null}
-//             <Field
-//               name="phone"
-//               placeholder="Phone number"
-//               // value={phone}
-//               // onChange={this.handleChange}
-//               validate={validatePhone}
-//             />
-//             {errors.phone && touched.phone ? <div>{errors.phone}</div> : null}
-//             <input className="button"
-// onClick={this.handleSubmit} type="button" value="Confirm" />
-//           </Form>
-//         )}
-//       </Formik>
-//       <pre>{data}</pre>
-//     </>
-//   );
-// }; */ }
+      ) : (
+        <p>{`Thank you for shopping with us ${checkoutForm.formData.firstName}`}</p>
+      )}
+    </div>
+  );
+};
 
 export default CheckoutForm;

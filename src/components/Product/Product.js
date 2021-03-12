@@ -6,13 +6,12 @@ import styles from './Product.module.scss';
 const Product = ({
   product, onIncrement, onDecrement,
 }) => (
-  <div className={styles.categories}>
+  <div data-testid="product" className={styles.categories}>
     <div className={styles.productCard}>
       <img data-testid="product-img" id={styles.productImg} src="assets/banana.png" alt="product" />
       <div className={styles.priceQuantityContainer}>
         <h4>{product.name}</h4>
         <p>{`Stock: ${product.count}`}</p>
-        <p>{`In cart: ${product.isCartCount}`}</p>
 
         <div className={styles.priceQuantity}>
           <p className={styles.productPrice}>
@@ -32,9 +31,10 @@ const Product = ({
 const productShape = {
   id: PropTypes.number,
   name: PropTypes.string,
-  quantity: PropTypes.number,
   price: PropTypes.number,
-  url: PropTypes.string,
+  count: PropTypes.number,
+  inCartCount: PropTypes.number,
+  category: PropTypes.string,
 };
 
 Product.propTypes = {

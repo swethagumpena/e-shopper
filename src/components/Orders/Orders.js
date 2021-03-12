@@ -13,82 +13,73 @@ const Orders = ({ orders }) => (
     <div>
       <table className="basket-table">
         <tbody>
-          {orders.map((order) => (
-            <div key={order.id}>
-              <tr>
-                <th>ORDER</th>
-                <th>ITEMS</th>
-                <th>DATE</th>
-                <th>AMOUNT</th>
-              </tr>
-              <tr>
-                <td className="items-align">
-                  Order id:
-                  {' '}
-                  {order.id}
-                </td>
-                <td className="items-align">
-                  {order.items.length}
-                  {' '}
-                  items
-                </td>
-                <td className="items-align">{order.date}</td>
-                <td className="items-align">
-                  Rs.
-                  {' '}
-                  {order.amount}
-                  .00
-                </td>
-              </tr>
-              <tr>
-                <th>ITEM DESCRIPTION</th>
-                <th>UNIT PRICE</th>
-                <th>QUANTITY</th>
-                <th>SUB TOTAL</th>
-              </tr>
+          {orders.map((order) => {
+            console.log('jj', order);
+            const orderDate = new Date(order.date);
+            let total = 0;
+            return (
+              <>
+                <tr key={order.id}>
+                  <th>ORDER</th>
+                  <th>ITEMS</th>
+                  <th>DATE</th>
+                  <th>AMOUNT</th>
+                </tr>
+                <tr>
+                  <td className="items-align">
+                    {`Order id: ${order.id}`}
+                  </td>
+                  <td className="items-align">
+                    {`${order.items.length} items`}
+                  </td>
+                  <td className="items-align">{`${orderDate.getDate()} - ${orderDate.getMonth()} - ${orderDate.getFullYear()}`}</td>
+                  <td className="items-align">
+                    {`Rs. ${total}.00`}
+                  </td>
+                </tr>
+                <tr>
+                  <th>ITEM DESCRIPTION</th>
+                  <th>UNIT PRICE</th>
+                  <th>QUANTITY</th>
+                  <th>SUB TOTAL</th>
+                </tr>
 
-              {order.items.map((eachItem) => (
-                <>
-                  <tr className="category">
-                    <td>{eachItem.category}</td>
-                    <td />
-                    <td />
-                    <td />
-                  </tr>
-                  <tr key={eachItem.id}>
-                    <td>{eachItem.name}</td>
-                    <td className="items-align">
-                      Rs.
-                      {' '}
-                      {eachItem.price}
-                      .00
-                    </td>
-                    <td className="items-align">{eachItem.count}</td>
-                    <td className="items-align">
-                      Rs.
-                      {' '}
-                      {eachItem.price * eachItem.count}
-                      .00
-                    </td>
-                  </tr>
-                </>
-              ))}
-              <tr>
-                <td />
-                <td />
-                <td />
-                <td className="total-data">
-                  <p>
-                    TOTAL Rs.
-                    {' '}
-                    {order.items.reduce((accumulator, item) => (
-                      accumulator + item.price * item.count), 0)}
-                    .00
-                  </p>
-                </td>
-              </tr>
-            </div>
-          ))}
+                {order.items.map((eachItem) => {
+                  total += eachItem.price * eachItem.inCartCount;
+                  return (
+                    <React.Fragment key={eachItem.id}>
+                      <tr className="category">
+                        <td>{eachItem.category}</td>
+                        <td />
+                        <td />
+                        <td />
+                      </tr>
+                      <tr>
+                        <td>{eachItem.name}</td>
+                        <td className="items-align">
+                          {`Rs. ${eachItem.price}.00`}
+                        </td>
+                        <td className="items-align">{eachItem.inCartCount}</td>
+                        <td className="items-align">
+                          {`Rs. ${eachItem.price * eachItem.inCartCount}.00`}
+                        </td>
+                      </tr>
+                    </React.Fragment>
+                  );
+                })}
+                <tr>
+                  <td />
+                  <td />
+                  <td />
+                  <td className="total-data">
+                    <p>
+                      {`TOTAL Rs. ${total}.00`}
+                    </p>
+                  </td>
+                </tr>
+              </>
+            );
+          })}
         </tbody>
 
       </table>

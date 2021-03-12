@@ -24,10 +24,12 @@ const App = () => {
   const [theme, setTheme] = useState(themes.light);
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState({});
-  const [error, setError] = useState(null);
   const [cartCount, setCartCount] = useState(0);
   const [cartItems, setCartItems] = useState({});
   const [orders, setOrders] = useState([]);
+  const [error, setError] = useState(null);
+  const [isLoaded, setLoaded] = useState('false');
+
   // const [products, setProducts] = useState([
   //   {
   //     id: 1,
@@ -146,7 +148,6 @@ const App = () => {
 
   const groupByCategory = (items) => {
     const groupedProducts = {};
-    console.log(typeof items);
     items.forEach((product) => {
       if (!(product.category in groupedProducts)) {
         groupedProducts[product.category] = [];
@@ -155,29 +156,58 @@ const App = () => {
     });
     return groupedProducts;
   };
+  // groupByCategory takes in array; returns object
 
   useEffect(async () => {
-    const { data, err } = await axios.get('http://localhost:8080/items');
-    const items = data.data;
+    try {
+      const { data, err } = await axios.get('http://localhost:8080/items');
+      const items = data.data;
 
-    if (items) {
-      const updatedProduct = items.map((eachItem) => ({
-        ...eachItem,
-        inCartCount: 0, // add a new key
-      }));
-      setProducts(updatedProduct);
-      setFilteredProducts(groupByCategory(updatedProduct));
-    } else if (err) {
-      setError(err);
+      if (items) {
+        const updatedProduct = items.map((eachItem) => ({
+          ...eachItem,
+          inCartCount: 0, // add a new key
+        }));
+        setProducts(updatedProduct);
+        setFilteredProducts(groupByCategory(updatedProduct));
+        setLoaded(true);
+      } else if (err) {
+        setLoaded(true);
+        setError(err);
+      }
+    } catch (e) {
+      setError(e);
     }
   }, []);
 
   useEffect(async () => {
     const { data, err } = await axios.get('http://localhost:8080/orders');
     const ordersInfo = data.data;
-    // console.log('orders', ordersInfo);
+    console.log('orders', ordersInfo);
     setOrders(ordersInfo);
+    // const categorisedOrders = ordersInfo.map((order) => ({
+    //   ...order,
+    //   items: groupByCategory(order.items),
+    // }));
+    // console.log('kk', categorisedOrders);
+    // setOrders(categorisedOrders);
   }, []);
+
+  // on checkout
+  const addNewOrder = () => {
+    const itemsInCart = Object.values(cartItems).flat();
+    // ARRAY OF OBJECTS
+    const currentOrder = { items: itemsInCart };
+    const updatedOrders = [...orders, currentOrder]; // spread in [] coz orders initialy array
+    setOrders(updatedOrders);
+    return currentOrder;
+
+    // console.log('swee', orders);
+  };
+
+  const onSubmitReset = () => {
+    setCartCount(0);
+  };
 
   const onIncrement = (item, category) => {
     if (item.count > 0) {
@@ -263,7 +293,11 @@ const App = () => {
             />
           </Route>
           <Route path="/checkout">
-            <CheckoutForm />
+            <CheckoutForm
+              addNewOrder={addNewOrder}
+              onSubmitReset={onSubmitReset}
+              cartItems={cartItems}
+            />
           </Route>
         </Switch>
       </BrowserRouter>
