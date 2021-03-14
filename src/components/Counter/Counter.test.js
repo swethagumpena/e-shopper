@@ -29,12 +29,6 @@ describe(Counter.name, () => {
     expect(screen.getByText('2 in basket'));
   });
 
-  // render(<Counter
-  //   value={2}
-  //   onIncrement={() => {}}
-  //   onDecrement={() => {}}
-  // />)
-
   test('should display an increment button', () => {
     render(<Counter {...mockProps} />);
     const incrementElement = screen.getByText('+');

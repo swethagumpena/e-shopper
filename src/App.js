@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
@@ -17,8 +18,9 @@ const App = () => {
   const [cartItems, setCartItems] = useState({});
   const [orders, setOrders] = useState([]);
   const [error, setError] = useState(null);
-  const [isLoaded, setLoaded] = useState('false');
+  const [isLoaded, setIsLoaded] = useState('false');
 
+  // groupByCategory takes in array; returns object
   const groupByCategory = (items) => {
     const groupedByCategory = items.reduce((groupedProducts, item) => {
       const currentCategory = item.category;
@@ -28,6 +30,7 @@ const App = () => {
         [currentCategory]: [...prevProductsOfSameCategory, item],
       };
     }, {});
+    console.log('grouped', groupedByCategory);
     return groupedByCategory;
   };
   //   const groupedProducts = {};
@@ -44,11 +47,13 @@ const App = () => {
   useEffect(async () => {
     try {
       const updatedProduct = await ApiUtils.getItems();
+      console.log('up', updatedProduct); // array of objects
       if (updatedProduct) {
         setFilteredProducts(groupByCategory(updatedProduct));
-        setLoaded(true);
+        // object with key as category and value as array of objects
+        setIsLoaded(true);
       } else {
-        setLoaded(true);
+        setIsLoaded(true);
       }
     } catch (e) {
       setError(e);
@@ -69,7 +74,9 @@ const App = () => {
 
   // on checkout
   const addNewOrder = () => {
+    console.log('before', cartItems);
     const itemsInCart = Object.values(cartItems).flat();
+    console.log('aftter', itemsInCart);
     // ARRAY OF OBJECTS
     const currentOrder = { items: itemsInCart };
     return currentOrder;
@@ -85,6 +92,7 @@ const App = () => {
 
   const onIncrement = (item, category) => {
     if (item.count > 0) {
+      // count is stock here
       // eslint-disable-next-line max-len
       const newProducts = filteredProducts[category].map((eachProduct) => ((eachProduct.id === item.id) ? {
         ...eachProduct,
@@ -107,6 +115,21 @@ const App = () => {
       setCartItems(cartProducts);
     }
   };
+
+  // const onIncrement = (id, category) => {
+  //   const modifiedProductCount = groupProducts[category].map((product) => {
+  //     if (product.id === id) {
+  //       const newProductCount = product.count - 1;
+  //       const newProductCartCount = product.countInCart + 1;
+  //       const newProduct = { ...product, count: newProductCount, countInCart: newProductCartCount };
+  //       return newProduct;
+  //     }
+  //     return product;
+  //   });
+  //   groupProducts[category] = modifiedProductCount;
+  //   setGroupProduct({ ...groupProducts });
+  //   setCartCount(cartCount + 1);
+  // };
 
   const onDecrement = (item, category) => {
     if (item.inCartCount === 0) {

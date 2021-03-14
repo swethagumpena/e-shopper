@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import './Cart.scss';
 // import { Link, useHistory } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
-// import { connect } from 'formik';
 
 const Cart = ({ cartCount, cartItems }) => {
   const history = useHistory();
-  console.log(cartItems);
+  console.log('ci', cartItems);
   let total = 0;
   return (
 
@@ -30,10 +29,10 @@ const Cart = ({ cartCount, cartItems }) => {
             return (
               <React.Fragment key={category}>
                 <tr className="category">
-                  <td>{category}</td>
+                  <td colSpan="4">{category}</td>
+                  {/* <td />
                   <td />
-                  <td />
-                  <td />
+                  <td /> */}
                 </tr>
                 {cartItems[category].map((eachItem) => {
                   total += eachItem.price * eachItem.inCartCount;
